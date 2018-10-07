@@ -1,17 +1,16 @@
-﻿using lyq.Entities;
-using lyq.Utility.Service;
+﻿using lyq.Common;
+using lyq.Dto;
+using lyq.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace lyq.IService
 {
-    public interface IUserService: IDisposable
+    public interface IUserService
     {
-        Task<int> Add();
-        Task<Paging<UserEntity>> GetPagingAsync(Expression<Func<UserEntity, bool>> whereExpression, int pageIndex, int pageSize);
+        Task<UserDto> GetUserAsync(string username,string password=null);
+        Task<int> AddAsync();
+        Task<Paging> GetPagingAsync(Expression<Func<UserEntity, bool>> whereExpression, int pageIndex, int pageSize);
     }
 }

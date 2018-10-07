@@ -1,7 +1,7 @@
-﻿using lyq.EntityFramework;
+﻿using lyq.Entities;
+using lyq.EntityFramework;
 using lyq.IService;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -10,7 +10,7 @@ using Z.EntityFramework.Plus;
 
 namespace lyq.Service
 {
-    class BaseService<TEntity> : IBaseService<TEntity> where TEntity : class
+    public class BaseService : IBaseService
     {
         protected lyqContext dbContext = new lyqContext();
 
@@ -20,7 +20,7 @@ namespace lyq.Service
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="t"></param>
         /// <returns></returns>
-        public virtual void Add(TEntity t)
+        public virtual void Add<TEntity>(TEntity t) where TEntity : BaseEntity
         {
             dbContext.Entry(t).State = EntityState.Added;
         }
@@ -31,7 +31,7 @@ namespace lyq.Service
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="t"></param>
         /// <returns></returns>
-        public virtual void Delete(TEntity t)
+        public virtual void Delete<TEntity>(TEntity t) where TEntity : BaseEntity
         {
             dbContext.Entry(t).State = EntityState.Deleted;
         }
@@ -42,7 +42,7 @@ namespace lyq.Service
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="whereExpression"></param>
         /// <returns></returns>
-        public virtual int Delete(Expression<Func<TEntity, bool>> whereExpression)
+        public virtual int Delete<TEntity>(Expression<Func<TEntity, bool>> whereExpression) where TEntity : BaseEntity
         {
             int result = dbContext.Set<TEntity>().Where(whereExpression).Delete();
             return result;
@@ -54,7 +54,7 @@ namespace lyq.Service
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="t"></param>
         /// <returns></returns>
-        public virtual void Update(TEntity t)
+        public virtual void Update<TEntity>(TEntity t) where TEntity : BaseEntity
         {
             dbContext.Entry(t).State = EntityState.Modified;
         }
@@ -65,7 +65,7 @@ namespace lyq.Service
         /// <param name="whereExpression">条件</param>
         /// <param name="updateExpression">表达式</param>
         /// <returns></returns>
-        public virtual int Update(Expression<Func<TEntity, bool>> whereExpression, Expression<Func<TEntity, TEntity>> updateExpression)
+        public virtual int Update<TEntity>(Expression<Func<TEntity, bool>> whereExpression, Expression<Func<TEntity, TEntity>> updateExpression) where TEntity : BaseEntity
         {
             var result = dbContext.Set<TEntity>().Where(whereExpression).Update(updateExpression);
             return result;
@@ -77,7 +77,7 @@ namespace lyq.Service
         /// <param name="whereExpression">条件</param>
         /// <param name="updateExpression">表达式</param>
         /// <returns></returns>
-        public virtual Task<int> UpdateAsync(Expression<Func<TEntity, bool>> whereExpression, Expression<Func<TEntity, TEntity>> updateExpression)
+        public virtual Task<int> UpdateAsync<TEntity>(Expression<Func<TEntity, bool>> whereExpression, Expression<Func<TEntity, TEntity>> updateExpression) where TEntity : BaseEntity
         {
             var result = dbContext.Set<TEntity>().Where(whereExpression).UpdateAsync(updateExpression);
             return result;
@@ -100,24 +100,14 @@ namespace lyq.Service
             return result;
         }
         /// <summary>
-        /// 获取一个实体
+        /// 获取IQueryable对象
         /// </summary>
         /// <param name="whereExpression"></param>
         /// <returns></returns>
-        public virtual Task<TEntity> GetEntity(Expression<Func<TEntity, bool>> whereExpression)
+        public virtual IQueryable<TEntity> GetAll<TEntity>(Expression<Func<TEntity, bool>> whereExpression) where TEntity : BaseEntity
         {
-            return dbContext.Set<TEntity>().SingleOrDefaultAsync();
+            return dbContext.Set<TEntity>().Where(whereExpression);
         }
-        /// <summary>
-        /// 获取列表
-        /// </summary>
-        /// <param name="whereExpression"></param>
-        /// <returns></returns>
-        public virtual Task<List<TEntity>> GetEntities(Expression<Func<TEntity, bool>> whereExpression)
-        {
-            return dbContext.Set<TEntity>().ToListAsync();
-        }
-
 
         public void Dispose()
         {

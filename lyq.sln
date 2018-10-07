@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyq.Service", "lyq.Service\lyq.Service.csproj", "{7F38236E-5D01-4FC9-9641-301B60863451}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyq.Utility", "lyq.Utility\lyq.Utility.csproj", "{C20EBF74-2892-47E6-9512-A3BF9DF06FFF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyq.Entities", "lyq.Entities\lyq.Entities.csproj", "{023DFFBA-AD7C-4775-8121-CD250F866334}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lyq.Interface", "lyq.Interface", "{0F9D52D1-1BF3-4011-B4B1-19070CF02B6A}"
@@ -17,7 +15,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyq.IEntities", "lyq.IEntit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyq.Web", "lyq.Web\lyq.Web.csproj", "{760C0EA4-CBC5-414C-9ADE-575866AFE9EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyq.EntityFramework", "lyq.Core\lyq.EntityFramework.csproj", "{FB7B557E-71FE-46E4-9850-A6DC5D34743B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyq.EntityFramework", "lyq.EntityFramework\lyq.EntityFramework.csproj", "{FB7B557E-71FE-46E4-9850-A6DC5D34743B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyq.Common", "lyq.Common\lyq.Common.csproj", "{8AB8964C-EB40-4622-B37D-0FF552DDAD9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyq.Dto", "lyq.Dto\lyq.Dto.csproj", "{21D91B22-16AF-4804-8F48-CD00A6A5D8F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +31,6 @@ Global
 		{7F38236E-5D01-4FC9-9641-301B60863451}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F38236E-5D01-4FC9-9641-301B60863451}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F38236E-5D01-4FC9-9641-301B60863451}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C20EBF74-2892-47E6-9512-A3BF9DF06FFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C20EBF74-2892-47E6-9512-A3BF9DF06FFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C20EBF74-2892-47E6-9512-A3BF9DF06FFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C20EBF74-2892-47E6-9512-A3BF9DF06FFF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{023DFFBA-AD7C-4775-8121-CD250F866334}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{023DFFBA-AD7C-4775-8121-CD250F866334}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{023DFFBA-AD7C-4775-8121-CD250F866334}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,6 +51,14 @@ Global
 		{FB7B557E-71FE-46E4-9850-A6DC5D34743B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB7B557E-71FE-46E4-9850-A6DC5D34743B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB7B557E-71FE-46E4-9850-A6DC5D34743B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AB8964C-EB40-4622-B37D-0FF552DDAD9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AB8964C-EB40-4622-B37D-0FF552DDAD9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AB8964C-EB40-4622-B37D-0FF552DDAD9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AB8964C-EB40-4622-B37D-0FF552DDAD9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21D91B22-16AF-4804-8F48-CD00A6A5D8F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21D91B22-16AF-4804-8F48-CD00A6A5D8F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21D91B22-16AF-4804-8F48-CD00A6A5D8F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21D91B22-16AF-4804-8F48-CD00A6A5D8F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

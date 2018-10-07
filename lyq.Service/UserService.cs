@@ -1,58 +1,84 @@
-﻿using lyq.EntityFramework;
+﻿using lyq.Common;
+using lyq.Common.Extension;
+using lyq.Dto;
 using lyq.Entities;
 using lyq.IService;
-using lyq.Utility.Service;
+using lyq.Service.Dto;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace lyq.Service
 {
     public class UserService : IUserService
     {
-        private readonly lyqContext context = new lyqContext();
-
-        public async Task<Paging<UserEntity>> GetPagingAsync(Expression<Func<UserEntity, bool>> whereExpression, int pageIndex, int pageSize)
+        IBaseService baseService;
+        public UserService(IBaseService _baseService)
         {
-            var list = context.UserEntities.Where(whereExpression);
+            baseService = _baseService;
+        }
+        public async Task<Paging> GetPagingAsync(Expression<Func<UserEntity, bool>> whereExpression, int pageIndex, int pageSize)
+        {
+            var list = baseService.GetAll(whereExpression).AsNoTracking();
 
             var total = list.CountAsync();
 
             var result = list.Take(pageSize * pageIndex).Skip(pageSize * (pageIndex - 1)).ToListAsync();
 
-            var paper = new Paging<UserEntity>
+            var paper = new Paging
             {
                 pageIndex = pageIndex,
                 pageSize = pageSize,
                 total = await total,
-                result = await result
+                data = await result
             };
 
             return paper;
         }
+        /// <summary>
+        /// 根据用户名/密码获取用户对象
+        /// </summary>
+        /// <param name="username">用户名</param>
+        /// <param name="password">密码</param>
+        /// <returns></returns>
+        public async Task<UserDto> GetUserAsync(string username, string password = null)
+        {
+            Expression<Func<UserEntity, bool>> whereExpression = t => false;
 
-        public Task<int> Add()
-        {
-            context.UserEntities.Add(new UserEntity
+            if (!string.IsNullOrWhiteSpace(username))
             {
-                UserName = "liyanqi",
-                RoleId = 222,
-                RealName = "liyanqi",
-                Phone = "18105207689",
-                Password = "asdfasdf"
-            });
-            return context.SaveChangesAsync();
-        }
-        public void Dispose()
-        {
-            if (context != null)
-            {
-                context.Dispose();
+                whereExpression.And(t => t.UserName == username);
             }
+            if (!string.IsNullOrWhiteSpace(password))
+            {
+                whereExpression.And(t => t.Password == password);
+            }
+
+            var userEntity = baseService.GetAll(whereExpression).SingleOrDefaultAsync();
+            var userDto = (await userEntity).MapTo<UserDto>();
+            return userDto;
+        }
+
+        public async Task<int> AddAsync()
+        {
+            Task<int> result = Task.FromResult(0);
+            bool IsExist = await baseService.GetAll<UserEntity>(t => t.UserName == "liyanqi").AnyAsync();
+            if (!IsExist)
+            {
+                baseService.Add(new UserEntity
+                {
+                    UserName = "liyanqi",
+                    RoleId = 222,
+                    RealName = "liyanqi",
+                    Phone = "18105207689",
+                    Password = "asdfasdf"
+                });
+
+                result = baseService.SaveAsync();
+            }
+            return await result;
         }
     }
 }

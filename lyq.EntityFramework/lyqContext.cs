@@ -30,8 +30,8 @@
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            //获取实体映射
             Assembly assembly = Assembly.GetExecutingAssembly();
+            //所有继承自EntityTypeConfiguration这个类的映射文件都会被自动注册进来
             modelBuilder.Configurations.AddFromAssembly(assembly);
         }
     }

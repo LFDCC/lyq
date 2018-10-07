@@ -53,6 +53,18 @@
     <Compile Include="Mapping\PostMapping.cs" />
     <Compile Include="Mapping\RoleMapping.cs" />
     <Compile Include="Mapping\UserMapping.cs" />
+    <Compile Include="Migrations\201810070817431_addunique.cs" />
+    <Compile Include="Migrations\201810070817431_addunique.Designer.cs">
+      <DependentUpon>201810070817431_addunique.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810070833505_addroleformenu.cs" />
+    <Compile Include="Migrations\201810070833505_addroleformenu.Designer.cs">
+      <DependentUpon>201810070833505_addroleformenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810070839335_test.cs" />
+    <Compile Include="Migrations\201810070839335_test.Designer.cs">
+      <DependentUpon>201810070839335_test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -65,6 +77,17 @@
       <Project>{023DFFBA-AD7C-4775-8121-CD250F866334}</Project>
       <Name>lyq.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201810070817431_addunique.resx">
+      <DependentUpon>201810070817431_addunique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810070833505_addroleformenu.resx">
+      <DependentUpon>201810070833505_addroleformenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810070839335_test.resx">
+      <DependentUpon>201810070839335_test.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

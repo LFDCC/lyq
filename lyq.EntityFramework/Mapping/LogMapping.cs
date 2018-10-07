@@ -3,10 +3,12 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace lyq.EntityFramework.Mapping
 {
-    public class LogMapping:EntityTypeConfiguration<LogEntity>
+    public class LogMapping : EntityTypeConfiguration<LogEntity>
     {
-        public LogMapping() {
+        public LogMapping()
+        {
             ToTable("Sys_Log");
+            HasKey(t => t.Id);
             Property(t => t.ServiceName).HasMaxLength(50);
             Property(t => t.MethodName).HasMaxLength(50);
             Property(t => t.Parameters).HasMaxLength(50);

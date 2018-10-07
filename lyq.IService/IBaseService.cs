@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Common;
+﻿using lyq.Entities;
+using System;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace lyq.IService
 {
-    public interface IBaseService<TEntity> : IDisposable where TEntity : class
+    public interface IBaseService : IDisposable
     {
         /// <summary>
         /// 增加
@@ -16,21 +14,21 @@ namespace lyq.IService
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="t"></param>
         /// <returns></returns>
-        void Add(TEntity t);
+        void Add<TEntity>(TEntity t) where TEntity : BaseEntity;
         /// <summary>
         /// 删除
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="t"></param>
         /// <returns></returns>
-        void Delete(TEntity t);
+        void Delete<TEntity>(TEntity t) where TEntity : BaseEntity;
         /// <summary>
         /// 删除
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="whereExpression"></param>
         /// <returns></returns>
-        int Delete(Expression<Func<TEntity, bool>> whereExpression);
+        int Delete<TEntity>(Expression<Func<TEntity, bool>> whereExpression) where TEntity : BaseEntity;
 
         /// <summary>
         /// 修改
@@ -38,22 +36,22 @@ namespace lyq.IService
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="t"></param>
         /// <returns></returns>
-        void Update(TEntity t);
+        void Update<TEntity>(TEntity t) where TEntity : BaseEntity;
         /// <summary>
         /// 修改扩展方法
         /// </summary>
         /// <param name="whereExpression"></param>
         /// <param name="updateExpression"></param>
         /// <returns></returns>
-        int Update(Expression<Func<TEntity, bool>> whereExpression, Expression<Func<TEntity, TEntity>> updateExpression);
+        int Update<TEntity>(Expression<Func<TEntity, bool>> whereExpression, Expression<Func<TEntity, TEntity>> updateExpression) where TEntity : BaseEntity;
         /// <summary>
         /// 修改扩展异步方法
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
-        /// <param name="whereExpression">条件</param>
-        /// <param name="updateExpression">表达式</param>
+        /// <param name="whereExpression"></param>
+        /// <param name="updateExpression"></param>
         /// <returns></returns>
-        Task<int> UpdateAsync(Expression<Func<TEntity, bool>> whereExpression, Expression<Func<TEntity, TEntity>> updateExpression);
+        Task<int> UpdateAsync<TEntity>(Expression<Func<TEntity, bool>> whereExpression, Expression<Func<TEntity, TEntity>> updateExpression) where TEntity : BaseEntity;
         /// <summary>
         /// 提交
         /// </summary>
@@ -65,16 +63,11 @@ namespace lyq.IService
         /// <returns></returns>
         Task<int> SaveAsync();
         /// <summary>
-        /// 获取一个实体
+        /// 获得一个IQueryable集合
         /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
         /// <param name="whereExpression"></param>
         /// <returns></returns>
-        Task<TEntity> GetEntity(Expression<Func<TEntity, bool>> whereExpression);
-        /// <summary>
-        /// 获取列表
-        /// </summary>
-        /// <param name="whereExpression"></param>
-        /// <returns></returns>
-        Task<List<TEntity>> GetEntities(Expression<Func<TEntity, bool>> whereExpression);
+        IQueryable<TEntity> GetAll<TEntity>(Expression<Func<TEntity, bool>> whereExpression) where TEntity : BaseEntity;
     }
 }

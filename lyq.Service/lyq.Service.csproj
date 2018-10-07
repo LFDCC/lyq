@@ -30,7 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -48,29 +53,33 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseService.cs" />
-    <Compile Include="Dto\UserDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\lyq.Core\lyq.EntityFramework.csproj">
-      <Project>{fb7b557e-71fe-46e4-9850-a6dc5d34743b}</Project>
-      <Name>lyq.EntityFramework</Name>
+    <ProjectReference Include="..\lyq.Common\lyq.Common.csproj">
+      <Project>{8AB8964C-EB40-4622-B37D-0FF552DDAD9D}</Project>
+      <Name>lyq.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\lyq.Dto\lyq.Dto.csproj">
+      <Project>{21D91B22-16AF-4804-8F48-CD00A6A5D8F1}</Project>
+      <Name>lyq.Dto</Name>
     </ProjectReference>
     <ProjectReference Include="..\lyq.Entities\lyq.Entities.csproj">
       <Project>{023dffba-ad7c-4775-8121-cd250f866334}</Project>
       <Name>lyq.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\lyq.EntityFramework\lyq.EntityFramework.csproj">
+      <Project>{fb7b557e-71fe-46e4-9850-a6dc5d34743b}</Project>
+      <Name>lyq.EntityFramework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\lyq.IService\lyq.IService.csproj">
       <Project>{4fa86812-8c70-499f-af74-9054fd04a430}</Project>
       <Name>lyq.IService</Name>
     </ProjectReference>
-    <ProjectReference Include="..\lyq.Utility\lyq.Utility.csproj">
-      <Project>{C20EBF74-2892-47E6-9512-A3BF9DF06FFF}</Project>
-      <Name>lyq.Utility</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

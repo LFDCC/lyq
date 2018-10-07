@@ -9,7 +9,7 @@ namespace lyq.EntityFramework.Mapping
         {
             ToTable("Sys_User");
             HasKey(t => t.Id);
-            HasIndex(t => t.UserName);
+            HasIndex(t => t.UserName).IsUnique();//唯一索引
             HasRequired(t => t.RoleEntity).WithMany().HasForeignKey(t => t.RoleId);
             Property(t => t.UserName).HasMaxLength(50).IsRequired();
             Property(t => t.Password).HasMaxLength(50).IsRequired();
