@@ -1,15 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using lyq.IService;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace lyq.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        IUserService userService;
+        public HomeController(IUserService _userService)
         {
+            userService = _userService;
+        }
+        public async Task<ActionResult> Index()
+        {
+            int result=await userService.Add();
+
             ViewBag.Title = "Home Page";
 
             return View();
