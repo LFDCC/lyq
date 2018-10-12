@@ -3,8 +3,8 @@ using lyq.Common.Extension;
 using lyq.Dto;
 using lyq.Entities;
 using lyq.IService;
-using lyq.Service.Dto;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -61,20 +61,14 @@ namespace lyq.Service
             return userDto;
         }
 
-        public async Task<int> AddAsync()
+        public async Task<int> AddAsync(UserDto userDto)
         {
             Task<int> result = Task.FromResult(0);
             bool IsExist = await baseService.GetAll<UserEntity>(t => t.UserName == "liyanqi").AnyAsync();
             if (!IsExist)
             {
-                baseService.Add(new UserEntity
-                {
-                    UserName = "liyanqi",
-                    RoleId = 222,
-                    RealName = "liyanqi",
-                    Phone = "18105207689",
-                    Password = "asdfasdf"
-                });
+                var userEntity = userDto.MapTo<UserEntity>();
+                baseService.Add(userEntity);
 
                 result = baseService.SaveAsync();
             }

@@ -8,6 +8,7 @@ namespace lyq.Dto
 {
     public class UserDto
     {
+        public long Id { get; set; }
         /// <summary>
         /// 用户名
         /// </summary>
@@ -44,5 +45,7 @@ namespace lyq.Dto
         /// 删除时间
         /// </summary>
         public DateTime? DeleteTime { get; set; }
+
+        public long RoleId { get; set; }
     }
 }

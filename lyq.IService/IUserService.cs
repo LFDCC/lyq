@@ -9,8 +9,8 @@ namespace lyq.IService
 {
     public interface IUserService
     {
-        Task<UserDto> GetUserAsync(string username,string password=null);
-        Task<int> AddAsync();
+        Task<UserDto> GetUserAsync(string username, string password = null);
+        Task<int> AddAsync(UserDto userDto);
         Task<Paging> GetPagingAsync(Expression<Func<UserEntity, bool>> whereExpression, int pageIndex, int pageSize);
     }
 }

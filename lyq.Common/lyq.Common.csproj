@@ -72,8 +72,11 @@
     <Compile Include="Encrypt\MD5.cs" />
     <Compile Include="Encrypt\SHA1.cs" />
     <Compile Include="Encrypt\Sha256.cs" />
-    <Compile Include="EntityMapper.cs" />
-    <Compile Include="Extension\ObjectEx.cs" />
+    <Compile Include="Extension\ExpressExt.cs" />
+    <Compile Include="Extension\JsonExt.cs" />
+    <Compile Include="Extension\MapperExt.cs" />
+    <Compile Include="Extension\ObjectExt.cs" />
+    <Compile Include="HttpResult.cs" />
     <Compile Include="Images\CodeImage.cs" />
     <Compile Include="Images\ThumbnailImage.cs" />
     <Compile Include="Images\VerificationCode.cs" />
