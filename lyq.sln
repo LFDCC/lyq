@@ -3,16 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyq.Service", "lyq.Service\lyq.Service.csproj", "{7F38236E-5D01-4FC9-9641-301B60863451}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyq.Entities", "lyq.Entities\lyq.Entities.csproj", "{023DFFBA-AD7C-4775-8121-CD250F866334}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lyq.Interface", "lyq.Interface", "{0F9D52D1-1BF3-4011-B4B1-19070CF02B6A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyq.IService", "lyq.IService\lyq.IService.csproj", "{4FA86812-8C70-499F-AF74-9054FD04A430}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyq.IEntities", "lyq.IEntities\lyq.IEntities.csproj", "{DAE36904-3C93-49A0-A4D9-89A8DA45DEDF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyq.Web", "lyq.Web\lyq.Web.csproj", "{760C0EA4-CBC5-414C-9ADE-575866AFE9EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyq.EntityFramework", "lyq.EntityFramework\lyq.EntityFramework.csproj", "{FB7B557E-71FE-46E4-9850-A6DC5D34743B}"
@@ -21,9 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyq.Common", "lyq.Common\ly
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyq.Dto", "lyq.Dto\lyq.Dto.csproj", "{21D91B22-16AF-4804-8F48-CD00A6A5D8F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{FC6938F7-BC41-469B-9FA4-96DD0B9C961D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication2", "WebApplication2\WebApplication2.csproj", "{EAD3A9B6-0CAE-4DDE-B40E-C3059E673FB0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyq.Service", "lyq.Service\lyq.Service.csproj", "{7F38236E-5D01-4FC9-9641-301B60863451}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,22 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7F38236E-5D01-4FC9-9641-301B60863451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7F38236E-5D01-4FC9-9641-301B60863451}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7F38236E-5D01-4FC9-9641-301B60863451}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7F38236E-5D01-4FC9-9641-301B60863451}.Release|Any CPU.Build.0 = Release|Any CPU
-		{023DFFBA-AD7C-4775-8121-CD250F866334}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{023DFFBA-AD7C-4775-8121-CD250F866334}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{023DFFBA-AD7C-4775-8121-CD250F866334}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{023DFFBA-AD7C-4775-8121-CD250F866334}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4FA86812-8C70-499F-AF74-9054FD04A430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4FA86812-8C70-499F-AF74-9054FD04A430}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4FA86812-8C70-499F-AF74-9054FD04A430}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4FA86812-8C70-499F-AF74-9054FD04A430}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DAE36904-3C93-49A0-A4D9-89A8DA45DEDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DAE36904-3C93-49A0-A4D9-89A8DA45DEDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DAE36904-3C93-49A0-A4D9-89A8DA45DEDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DAE36904-3C93-49A0-A4D9-89A8DA45DEDF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{760C0EA4-CBC5-414C-9ADE-575866AFE9EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{760C0EA4-CBC5-414C-9ADE-575866AFE9EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{760C0EA4-CBC5-414C-9ADE-575866AFE9EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,21 +35,13 @@ Global
 		{21D91B22-16AF-4804-8F48-CD00A6A5D8F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21D91B22-16AF-4804-8F48-CD00A6A5D8F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21D91B22-16AF-4804-8F48-CD00A6A5D8F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FC6938F7-BC41-469B-9FA4-96DD0B9C961D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC6938F7-BC41-469B-9FA4-96DD0B9C961D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC6938F7-BC41-469B-9FA4-96DD0B9C961D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC6938F7-BC41-469B-9FA4-96DD0B9C961D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EAD3A9B6-0CAE-4DDE-B40E-C3059E673FB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EAD3A9B6-0CAE-4DDE-B40E-C3059E673FB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EAD3A9B6-0CAE-4DDE-B40E-C3059E673FB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EAD3A9B6-0CAE-4DDE-B40E-C3059E673FB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F38236E-5D01-4FC9-9641-301B60863451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F38236E-5D01-4FC9-9641-301B60863451}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F38236E-5D01-4FC9-9641-301B60863451}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F38236E-5D01-4FC9-9641-301B60863451}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{4FA86812-8C70-499F-AF74-9054FD04A430} = {0F9D52D1-1BF3-4011-B4B1-19070CF02B6A}
-		{DAE36904-3C93-49A0-A4D9-89A8DA45DEDF} = {0F9D52D1-1BF3-4011-B4B1-19070CF02B6A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DA979B1D-083D-42BF-B9A9-00A35588D866}

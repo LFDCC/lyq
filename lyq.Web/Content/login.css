@@ -1,0 +1,49 @@
+﻿body {
+    background-color: #f5f5f5;
+}
+
+.login-box {
+    margin: 240px auto 0;
+    width: 380px;
+    background-color: #fff;
+    padding: 15px 30px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px #999;
+}
+
+    .login-box .layui-input-big-width {
+        width: 245px;
+    }
+
+    .login-box .layui-input-small-width {
+        width: 100px;
+    }
+
+    .login-box .layui-input-code-width {
+        width: 135px;
+    }
+
+.layui-input-code-width img {
+    cursor: pointer
+}
+
+.login-box .layui-input {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.login-box .layui-btn {
+    width: 100%;
+}
+
+.login-box .copyright {
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    font-size: 12px;
+    color: #ccc;
+}
+
+    .login-box .copyright a {
+        color: #ccc;
+    }

@@ -45,7 +45,7 @@ namespace lyq.Service
         /// <returns></returns>
         public async Task<UserDto> GetUserAsync(string username, string password = null)
         {
-            Expression<Func<UserEntity, bool>> whereExpression = t => false;
+            Expression<Func<UserEntity, bool>> whereExpression = t => true;
 
             if (!string.IsNullOrWhiteSpace(username))
             {

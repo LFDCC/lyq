@@ -9,6 +9,7 @@ namespace lyq.Web
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new ExceptionAttribute());
+            filters.Add(new AuthorizeAttribute());
         }
     }
 }
