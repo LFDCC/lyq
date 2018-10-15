@@ -3,7 +3,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace lyq.Common.Encrypt
+namespace lyq.Infrastructure.Tools.Encrypt
 {
     public class Sha256
     {

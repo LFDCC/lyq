@@ -1,4 +1,4 @@
-﻿namespace lyq.Common
+﻿namespace lyq.Infrastructure.Web
 {
     public class Paging
     {

@@ -6,9 +6,9 @@ using System.Reflection;
 using System.Web.Compilation;
 using System.Web.Mvc;
 
-namespace lyq.Web
+namespace lyq.Infrastructure.Ioc
 {
-    public class IocConfig
+    public class AutoFacConfig
     {
         /// <summary>
         /// IOC 容器
@@ -43,12 +43,14 @@ namespace lyq.Web
         {
             var builder = new ContainerBuilder();
              
-            var assemblys = BuildManager.GetReferencedAssemblies().Cast<Assembly>().ToList();
+            var assemblys = BuildManager.GetReferencedAssemblies().Cast<Assembly>();//获取所有的程序集
+            
             builder.RegisterAssemblyTypes(assemblys.ToArray())
             .Where(t => t.Name.EndsWith("Service"))//注册所有的应用Service类
             .AsImplementedInterfaces().InstancePerLifetimeScope();
             
-            builder.RegisterControllers(Assembly.GetExecutingAssembly());//注册mvc容器的实现
+            builder.RegisterControllers(Assembly.GetCallingAssembly());//注册mvc容器的实现
+            builder.RegisterFilterProvider();//注册到筛选器            
 
             container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

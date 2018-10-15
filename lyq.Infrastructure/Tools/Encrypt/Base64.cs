@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace lyq.Common.Encrypt
+namespace lyq.Infrastructure.Tools.Encrypt
 {
     public class Base64
     {

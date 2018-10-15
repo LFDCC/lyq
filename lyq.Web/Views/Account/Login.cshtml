@@ -78,12 +78,12 @@
                     beforeSend: function () {
                         nprogress.start();
                     },
-                    success: function (data) {
-                        if (data.status == 200) {
-                            location.href = data.jumpUrl;
+                    success: function (res) {
+                        if (res.status == 200) {
+                            location.href = res.data;
                         } else {
                             nprogress.done();
-                            index = layer.alert(data.message);
+                            index = layer.alert(res.msg);
                         }
                     }
                 });

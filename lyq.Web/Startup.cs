@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using lyq.Infrastructure.Mapping;
+using lyq.Infrastructure.Ioc;
+using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
@@ -25,8 +27,8 @@ namespace lyq.Web
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Account/Login"),
             });
-
-            IocConfig.RegisterContainer();
+            AutoMapConfig.RegisterMapper();
+            AutoFacConfig.RegisterContainer();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

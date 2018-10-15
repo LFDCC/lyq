@@ -4,7 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 
-namespace lyq.Common.Images
+namespace lyq.Infrastructure.Tools.Images
 {
     /// <summary>
     /// 缩率图操作类

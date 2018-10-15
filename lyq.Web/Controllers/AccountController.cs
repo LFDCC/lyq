@@ -1,9 +1,10 @@
-﻿using lyq.Common;
-using lyq.Common.Encrypt;
-using lyq.Common.Images;
-using lyq.Dto;
+﻿using lyq.Dto;
+using lyq.Infrastructure.Extension;
+using lyq.Infrastructure.Tools.Images;
+using lyq.Infrastructure.Web;
 using lyq.IService;
 using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -34,25 +35,29 @@ namespace lyq.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> LoginAsync(string username, string password, string checkcode, string returnUrl)
         {
-            string sessionCode = Session["checkcode"].ToString();
-            if (sessionCode.ToLower() != checkcode.ToLower())
+            string sessionCode = Session["checkcode"]?.ToString();
+            if (sessionCode == null)
             {
-                return Json(new { status = HttpResult.fail, message = "验证码错误！" });
+                return Json(new { status = ResultState.fail, message = "验证码过期，请刷新！" });
+            }
+            else if (sessionCode.ToLower() != checkcode.ToLower())
+            {
+                return Json(new { status = ResultState.fail, message = "验证码错误！" });
             }
             else
             {
-                password = MD5.Encrypt(password).ToUpper();
+                password = password.ToMd5().ToUpper();
                 UserDto user = await userService.GetUserAsync(username: username);
                 if (user == null)
                 {
-                    return Json(new { status = HttpResult.fail, message = "用户名不存在！" });
+                    return Json(new { status = ResultState.fail, message = "用户名不存在！" });
                 }
                 else
                 {
                     user = await userService.GetUserAsync(username, password);
                     if (user == null)
                     {
-                        return Json(new { status = HttpResult.fail, message = "密码错误！" });
+                        return Json(new { status = ResultState.fail, message = "密码错误！" });
                     }
                     else
                     {
@@ -65,15 +70,13 @@ namespace lyq.Web.Controllers
                     }, DefaultAuthenticationTypes.ApplicationCookie);
 
                         HttpContext.GetOwinContext().Authentication.SignIn(identity);
-
-
-                        return Json(new { status = HttpResult.success, jumpUrl = returnUrl ?? "/Home/Index" });
+                        
+                        return Json(new HttpResult { status = ResultState.success, data = returnUrl ?? "/Home/Index" });
                     }
                 }
             }
 
         }
-        [Authorize]
         public ActionResult LogOut()
         {
             HttpContext.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);

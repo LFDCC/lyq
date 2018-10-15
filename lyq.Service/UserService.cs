@@ -1,10 +1,9 @@
-﻿using lyq.Common;
-using lyq.Common.Extension;
-using lyq.Dto;
+﻿using lyq.Dto;
 using lyq.Entities;
+using lyq.Infrastructure.Extension;
+using lyq.Infrastructure.Web;
 using lyq.IService;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -45,19 +44,19 @@ namespace lyq.Service
         /// <returns></returns>
         public async Task<UserDto> GetUserAsync(string username, string password = null)
         {
-            Expression<Func<UserEntity, bool>> whereExpression = t => true;
-
+            Expression<Func<UserEntity, bool>> whereExpression = ExprExt.True<UserEntity>();
+            
             if (!string.IsNullOrWhiteSpace(username))
             {
-                whereExpression.And(t => t.UserName == username);
+                whereExpression = whereExpression.And(t => t.UserName == username);
             }
             if (!string.IsNullOrWhiteSpace(password))
             {
-                whereExpression.And(t => t.Password == password);
+                whereExpression = whereExpression.And(t => t.Password == password);
             }
-
-            var userEntity = baseService.GetAll(whereExpression).SingleOrDefaultAsync();
-            var userDto = (await userEntity).MapTo<UserDto>();
+            
+            var userEntity = await baseService.GetAll(whereExpression).FirstOrDefaultAsync();
+            var userDto = userEntity.MapTo<UserDto>();
             return userDto;
         }
 

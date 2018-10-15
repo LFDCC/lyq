@@ -65,6 +65,14 @@
     <Compile Include="Migrations\201810070839335_test.Designer.cs">
       <DependentUpon>201810070839335_test.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810131107598_test1.cs" />
+    <Compile Include="Migrations\201810131107598_test1.Designer.cs">
+      <DependentUpon>201810131107598_test1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810131109272_test2.cs" />
+    <Compile Include="Migrations\201810131109272_test2.Designer.cs">
+      <DependentUpon>201810131109272_test2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -77,6 +85,10 @@
       <Project>{023DFFBA-AD7C-4775-8121-CD250F866334}</Project>
       <Name>lyq.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\lyq.Infrastructure\lyq.Infrastructure.csproj">
+      <Project>{D4CE3501-DAC4-4945-BF90-69A4F782BFB6}</Project>
+      <Name>lyq.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810070817431_addunique.resx">
@@ -87,6 +99,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810070839335_test.resx">
       <DependentUpon>201810070839335_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810131107598_test1.resx">
+      <DependentUpon>201810131107598_test1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810131109272_test2.resx">
+      <DependentUpon>201810131109272_test2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

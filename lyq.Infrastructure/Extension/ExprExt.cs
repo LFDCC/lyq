@@ -2,11 +2,29 @@
 using System;
 using System.Linq.Expressions;
 
-namespace lyq.Common.Extension
+namespace lyq.Infrastructure.Extension
 {
-    public static class ExpressExt
+    public static class ExprExt
     {
         #region 表达式树扩展
+        /// <summary>
+        /// 初始化条件True
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static Expression<Func<T, bool>> True<T>()
+        {
+            return PredicateBuilder.New<T>(true);
+        }
+        /// <summary>
+        /// 初始化条件False
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static Expression<Func<T, bool>> False<T>()
+        {
+            return PredicateBuilder.New<T>(false);
+        }
 
         /// <summary>
         /// 合并表达式 expr1 AND expr2

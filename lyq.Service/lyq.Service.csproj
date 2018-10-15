@@ -57,10 +57,6 @@
     <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\lyq.Common\lyq.Common.csproj">
-      <Project>{8AB8964C-EB40-4622-B37D-0FF552DDAD9D}</Project>
-      <Name>lyq.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\lyq.Dto\lyq.Dto.csproj">
       <Project>{21D91B22-16AF-4804-8F48-CD00A6A5D8F1}</Project>
       <Name>lyq.Dto</Name>
@@ -72,6 +68,10 @@
     <ProjectReference Include="..\lyq.EntityFramework\lyq.EntityFramework.csproj">
       <Project>{fb7b557e-71fe-46e4-9850-a6dc5d34743b}</Project>
       <Name>lyq.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\lyq.Infrastructure\lyq.Infrastructure.csproj">
+      <Project>{D4CE3501-DAC4-4945-BF90-69A4F782BFB6}</Project>
+      <Name>lyq.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\lyq.IService\lyq.IService.csproj">
       <Project>{4fa86812-8c70-499f-af74-9054fd04a430}</Project>

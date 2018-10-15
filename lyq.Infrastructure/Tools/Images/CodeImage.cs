@@ -7,7 +7,7 @@ using ZXing.Common;
 using ZXing.QrCode;
 using ZXing.QrCode.Internal;
 
-namespace lyq.Common.Images
+namespace lyq.Infrastructure.Tools.Images
 {
     /// <summary>
     /// 二维码、条形码操作类

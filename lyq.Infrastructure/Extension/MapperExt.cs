@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
-namespace lyq.Common.Extension
+namespace lyq.Infrastructure.Extension
 {
     public static class MapperExt
     {
@@ -17,8 +16,7 @@ namespace lyq.Common.Extension
         /// <returns></returns>
         public static Destination MapTo<Destination>(this object obj)
         {
-            if (obj == null) return default(Destination);
-            Mapper.Initialize(ctx => ctx.CreateMap(obj.GetType(), typeof(Destination)));
+            if (obj == null) return default(Destination);            
             return Mapper.Map<Destination>(obj);
         }
 
@@ -32,7 +30,6 @@ namespace lyq.Common.Extension
         public static List<Destination> MapToList<Source, Destination>(this List<Source> obj)
         {
             if (obj == null) throw new ArgumentNullException();
-            Mapper.Initialize(ctx => ctx.CreateMap(typeof(Source), typeof(Destination)));
             return Mapper.Map<List<Source>, List<Destination>>(obj);
         }
 

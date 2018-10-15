@@ -1,8 +1,4 @@
-﻿using lyq.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using lyq.Infrastructure.Web;
 using System.Web.Mvc;
 
 namespace lyq.Web.Filter
@@ -13,10 +9,10 @@ namespace lyq.Web.Filter
         {
             if (filterContext.HttpContext.Request.IsAjaxRequest())
             {//ajax异常处理
-                filterContext.Result = new JsonResult() { Data = new { status = HttpResult.error, message = filterContext.Exception.Message }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                filterContext.Result =new JsonNetResult { Data = new HttpResult{ status = ResultState.error, msg = filterContext.Exception.Message }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
                 filterContext.ExceptionHandled = true;
                 filterContext.HttpContext.Response.Clear();
-                filterContext.HttpContext.Response.StatusCode = 500;
+                filterContext.HttpContext.Response.StatusCode = 200;
                 filterContext.HttpContext.Response.TrySkipIisCustomErrors = true;
             }
             else

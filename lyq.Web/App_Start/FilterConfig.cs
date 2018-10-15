@@ -10,6 +10,7 @@ namespace lyq.Web
         {
             filters.Add(new ExceptionAttribute());
             filters.Add(new AuthorizeAttribute());
+            filters.Add(new JsonNetAttribute());
         }
     }
 }

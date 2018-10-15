@@ -4,7 +4,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace lyq.Common.Images
+namespace lyq.Infrastructure.Tools.Images
 {
     /// <summary>
     /// 生成验证码

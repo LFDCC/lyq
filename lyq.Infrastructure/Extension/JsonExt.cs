@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 
 
-namespace lyq.Common.Extension
+namespace lyq.Infrastructure.Extension
 {
     public static class JsonExt
     {

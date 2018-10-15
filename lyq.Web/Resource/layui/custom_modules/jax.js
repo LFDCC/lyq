@@ -17,11 +17,7 @@
                 top.window.location = redirect || "/Account/Login";
             }
         },
-        error: function (XMLHttpRequest,a,b,c) {
-            console.log(XMLHttpRequest)
-            console.log(a)
-            console.log(b)
-            console.log(c)
+        error: function (XMLHttpRequest) {
             var message = XMLHttpRequest.responseJSON.message;
             layer.msg('异常！' + message, { icon: 15, time: 1200, shade: 0 });
         }

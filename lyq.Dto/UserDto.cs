@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using lyq.Entities;
+using lyq.Infrastructure.Mapping;
+using System;
 
 namespace lyq.Dto
 {
+    [AutoMap(typeof(UserEntity))]
     public class UserDto
     {
         public long Id { get; set; }

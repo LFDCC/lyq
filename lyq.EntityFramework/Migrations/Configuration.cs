@@ -1,7 +1,7 @@
 namespace lyq.EntityFramework.Migrations
 {
     using lyq.Entities;
-    using System.Collections.Generic;
+    using lyq.Infrastructure.Extension;
     using System.Data.Entity.Migrations;
 
     /// <summary>
@@ -57,7 +57,7 @@ namespace lyq.EntityFramework.Migrations
                 UserName = "admin",
                 RealName = "À­·çµÄCC",
                 Phone = "18105207689",
-                Password = "000000",
+                Password = "000000".ToMd5().ToUpper(),
                 Email = "1584329729@qq.com",
                 RoleId = 111
             });
