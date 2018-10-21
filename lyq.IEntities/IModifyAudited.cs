@@ -8,7 +8,7 @@ namespace lyq.IEntities
 {
     public interface IModifyAudited
     {
-        long? ModifyUserId { get; set; }
+        int? ModifyUserId { get; set; }
         DateTime? ModifyTime { get; set; }
     }
 }

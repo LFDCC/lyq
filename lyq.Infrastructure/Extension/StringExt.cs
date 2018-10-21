@@ -1,11 +1,7 @@
 ﻿using lyq.Infrastructure.Tools.Encrypt;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace lyq.Infrastructure.Extension
 {
@@ -278,7 +274,7 @@ namespace lyq.Infrastructure.Extension
         }
 
         /// <summary>
-        /// Converts PascalCase string to camelCase string.
+        ///将PascalCase字符串转换为camelCase字符串。
         /// </summary>
         /// <param name="str">String to convert</param>
         /// <param name="invariantCulture">Invariant culture</param>

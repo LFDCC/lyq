@@ -11,7 +11,7 @@ namespace lyq.IEntities
     /// </summary>
     public interface IDeleteAudited
     {
-        long? DeleteUserId { get; set; }
+        int? DeleteUserId { get; set; }
         bool? IsDelete { get; set; }
         DateTime? DeleteTime { get; set; }
     }

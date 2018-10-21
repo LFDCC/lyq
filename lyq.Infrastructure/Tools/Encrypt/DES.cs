@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -19,7 +20,7 @@ namespace lyq.Infrastructure.Tools.Encrypt
             var bKey = Encoding.ASCII.GetBytes(MD5.Encrypt(sKey).Substring(0, 8));
             des.Key = bKey;
             des.IV = bKey;
-            var ms = new System.IO.MemoryStream();
+            var ms = new MemoryStream();
             var cs = new CryptoStream(ms, des.CreateEncryptor(), CryptoStreamMode.Write);
             cs.Write(inputByteArray, 0, inputByteArray.Length);
             cs.FlushFinalBlock();
@@ -51,7 +52,7 @@ namespace lyq.Infrastructure.Tools.Encrypt
             var bKey = Encoding.ASCII.GetBytes(MD5.Encrypt(sKey).Substring(0, 8));
             des.Key = bKey;
             des.IV = bKey;
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            MemoryStream ms = new MemoryStream();
             CryptoStream cs = new CryptoStream(ms, des.CreateDecryptor(), CryptoStreamMode.Write);
             cs.Write(inputByteArray, 0, inputByteArray.Length);
             cs.FlushFinalBlock();

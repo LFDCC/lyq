@@ -1,28 +1,44 @@
 ﻿using lyq.IEntities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace lyq.Entities
 {
     public class LogEntity : BaseEntity, ICreateAudited
     {
         /// <summary>
-        /// service名称
+        /// Controller名称
         /// </summary>
-        public string ServiceName { get; set; }
+        public string ControllerName { get; set; }
         /// <summary>
-        /// 方法action名称
+        /// Action名称
         /// </summary>
-        public string MethodName { get; set; }
+        public string ActionName { get; set; }
         /// <summary>
-        /// 请求参数
+        /// Post/Get
         /// </summary>
-        public string Parameters { get; set; }
+        public string Method { get; set; }
+        /// <summary>
+        /// 请求的地址
+        /// </summary>
+        public string RequestUrl { get; set; }
+        /// <summary>
+        /// Query参数
+        /// </summary>
+        public string Query { get; set; }
+        /// <summary>
+        /// Form参数
+        /// </summary>
+        public string Form { get; set; }
+        /// <summary>
+        /// 日志信息
+        /// </summary>
+        public string Message { get; set; }
+        /// <summary>
+        /// 1 Error 2 Warn 3 Info 4 Debug
+        /// </summary>
+        public int Level { get; set; }
 
-        public long? CreateUserId { get; set; }
+        public int? CreateUserId { get; set; }
 
         public DateTime? CreateTime { get; set; }
     }

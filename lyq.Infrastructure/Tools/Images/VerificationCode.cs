@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Threading;
 
 namespace lyq.Infrastructure.Tools.Images
 {
@@ -115,7 +116,7 @@ namespace lyq.Infrastructure.Tools.Images
                 //画图片的边框线
                 g.DrawRectangle(new Pen(Color.Silver), 0, 0, image.Width - 1, image.Height - 1);
                 //保存图片数据
-                System.IO.MemoryStream stream = new MemoryStream();
+                MemoryStream stream = new MemoryStream();
                 image.Save(stream, ImageFormat.Jpeg);
                 //输出图片流
                 return stream.ToArray();
@@ -217,13 +218,13 @@ namespace lyq.Infrastructure.Tools.Images
         /// <param name="nMultValue">波形的幅度倍数，越大扭曲的程度越高，一般为3</param>
         /// <param name="dPhase">波形的起始相位，取值区间[0-2*PI)</param>
         /// <returns></returns>
-        public System.Drawing.Bitmap TwistImage(Bitmap srcBmp, bool bXDir, double dMultValue, double dPhase)
+        public Bitmap TwistImage(Bitmap srcBmp, bool bXDir, double dMultValue, double dPhase)
         {
-            System.Drawing.Bitmap destBmp = new Bitmap(srcBmp.Width, srcBmp.Height);
+            Bitmap destBmp = new Bitmap(srcBmp.Width, srcBmp.Height);
             // 将位图背景填充为白色
 
-            System.Drawing.Graphics graph = System.Drawing.Graphics.FromImage(destBmp);
-            graph.FillRectangle(new SolidBrush(System.Drawing.Color.White), 0, 0, destBmp.Width, destBmp.Height);
+            Graphics graph = Graphics.FromImage(destBmp);
+            graph.FillRectangle(new SolidBrush(Color.White), 0, 0, destBmp.Width, destBmp.Height);
             graph.Dispose();
             double dBaseAxisLen = bXDir ? (double)destBmp.Height : (double)destBmp.Width;
             for (int i = 0; i < destBmp.Width; i++)
@@ -238,7 +239,7 @@ namespace lyq.Infrastructure.Tools.Images
                     int nOldX = 0, nOldY = 0;
                     nOldX = bXDir ? i + (int)(dy * dMultValue) : i;
                     nOldY = bXDir ? j : j + (int)(dy * dMultValue);
-                    System.Drawing.Color color = srcBmp.GetPixel(i, j);
+                    Color color = srcBmp.GetPixel(i, j);
                     if (nOldX >= 0 && nOldX < destBmp.Width && nOldY >= 0 && nOldY < destBmp.Height)
                     {
                         destBmp.SetPixel(nOldX, nOldY, color);
@@ -251,7 +252,7 @@ namespace lyq.Infrastructure.Tools.Images
         public Color GetRandomColor()
         {
             Random RandomNum_First = new Random((int)DateTime.Now.Ticks);
-            System.Threading.Thread.Sleep(RandomNum_First.Next(50));
+            Thread.Sleep(RandomNum_First.Next(50));
             Random RandomNum_Sencond = new Random((int)DateTime.Now.Ticks);
             int int_Red = RandomNum_First.Next(210);
             int int_Green = RandomNum_Sencond.Next(180);

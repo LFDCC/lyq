@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using lyq.Infrastructure.Log;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -42,15 +43,17 @@ namespace lyq.Infrastructure.Ioc
         public static void RegisterContainer()
         {
             var builder = new ContainerBuilder();
-             
+
             var assemblys = BuildManager.GetReferencedAssemblies().Cast<Assembly>();//获取所有的程序集
-            
+
             builder.RegisterAssemblyTypes(assemblys.ToArray())
             .Where(t => t.Name.EndsWith("Service"))//注册所有的应用Service类
             .AsImplementedInterfaces().InstancePerLifetimeScope();
             
-            builder.RegisterControllers(Assembly.GetCallingAssembly());//注册mvc容器的实现
-            builder.RegisterFilterProvider();//注册到筛选器            
+            builder.RegisterType<Logger>().As<ILogger>().InstancePerLifetimeScope();
+
+            builder.RegisterFilterProvider();//注册到筛选器   
+            builder.RegisterControllers(Assembly.GetCallingAssembly());//注册mvc容器的实现                
 
             container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

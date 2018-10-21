@@ -21,10 +21,10 @@
         /// <summary>
         /// 父级
         /// </summary>
-        public long? ParentId { get; set; }
+        public int? ParentId { get; set; }
         /// <summary>
         /// null或0为通用权限
         /// </summary>
-        public long? RoleId { get; set; }
+        public int? RoleId { get; set; }
     }
 }

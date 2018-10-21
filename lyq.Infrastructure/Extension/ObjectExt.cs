@@ -29,11 +29,18 @@ namespace lyq.Infrastructure.Extension
         /// <returns>Converted object</returns>
         public static T To<T>(this object obj) where T : struct
         {
-            if (typeof(T) == typeof(Guid))
+            try
             {
-                return (T)TypeDescriptor.GetConverter(typeof(T)).ConvertFromInvariantString(obj.ToString());
+                if (typeof(T) == typeof(Guid))
+                {
+                    return (T)TypeDescriptor.GetConverter(typeof(T)).ConvertFromInvariantString(obj.ToString());
+                }
+                T t = (T)Convert.ChangeType(obj, typeof(T), CultureInfo.InvariantCulture);
+                return t;
             }
-            return (T)Convert.ChangeType(obj, typeof(T), CultureInfo.InvariantCulture);
+            catch {
+                return default(T);
+            }
         }
 
         /// <summary>

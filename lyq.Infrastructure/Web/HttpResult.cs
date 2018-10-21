@@ -31,6 +31,10 @@
         /// </summary>
         error = 202,
         /// <summary>
+        /// 没有权限
+        /// </summary>
+        unright = 203,
+        /// <summary>
         /// 超时
         /// </summary>
         timeout = 204

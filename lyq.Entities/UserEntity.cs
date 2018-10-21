@@ -21,7 +21,7 @@ namespace lyq.Entities
         /// <summary>
         /// 角色
         /// </summary>
-        public long RoleId { get; set; }
+        public int RoleId { get; set; }
         /// <summary>
         /// 角色
         /// </summary>
@@ -41,7 +41,7 @@ namespace lyq.Entities
         /// <summary>
         /// 删除人
         /// </summary>
-        public long? DeleteUserId { get; set; }
+        public int? DeleteUserId { get; set; }
         /// <summary>
         /// 是否删除
         /// </summary>

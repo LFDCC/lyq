@@ -24,7 +24,7 @@ namespace lyq.Entities
         /// <summary>
         /// 创建人
         /// </summary>
-        public long? CreateUserId { get; set; }
+        public int? CreateUserId { get; set; }
         /// <summary>
         /// 创建时间
         /// </summary>

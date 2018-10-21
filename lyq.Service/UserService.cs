@@ -55,7 +55,7 @@ namespace lyq.Service
                 whereExpression = whereExpression.And(t => t.Password == password);
             }
             
-            var userEntity = await baseService.GetAll(whereExpression).FirstOrDefaultAsync();
+            var userEntity = await baseService.GetAll(whereExpression).AsNoTracking().FirstOrDefaultAsync();
             var userDto = userEntity.MapTo<UserDto>();
             return userDto;
         }

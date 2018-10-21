@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace lyq.IEntities
 {
@@ -11,7 +7,7 @@ namespace lyq.IEntities
     /// </summary>
     public interface ICreateAudited
     {
-        long? CreateUserId { get; set; }
+        int? CreateUserId { get; set; }
         DateTime? CreateTime { get; set; }
     }
 }
