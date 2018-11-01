@@ -41,9 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBaseEntity.cs" />
-    <Compile Include="ICreateAudited.cs" />
-    <Compile Include="IDeleteAudited.cs" />
-    <Compile Include="IModifyAudited.cs" />
+    <Compile Include="ICreateEntity.cs" />
+    <Compile Include="IDeleteEntity.cs" />
+    <Compile Include="IModifyEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

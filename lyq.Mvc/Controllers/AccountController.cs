@@ -15,6 +15,7 @@ using System.Web.Mvc;
 namespace lyq.Web.Controllers
 {
     [AllowAnonymous]
+
     public class AccountController : Controller
     {
         IUserService userService;
@@ -28,8 +29,10 @@ namespace lyq.Web.Controllers
             return View();
         }
         [HttpPost]
+        [LogFilter(IntoDb = false)]
         public async Task<ActionResult> Login(string username, string password, string checkcode, string returnUrl)
         {
+            throw new Exception("出错啦");
             string sessionCode = Session["checkcode"]?.ToString();
             if (sessionCode == null)
             {

@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 namespace lyq.Mvc.Filter
 {
-    public class JsonNetFilterAttribute : ActionFilterAttribute
+    public class JsonFilterAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {

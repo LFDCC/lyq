@@ -1,6 +1,7 @@
 ﻿using lyq.Dto;
 using lyq.Entities;
 using lyq.Infrastructure.Extension;
+using lyq.Infrastructure.Ioc;
 using lyq.Infrastructure.Web;
 using lyq.IService;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace lyq.Service
 {
-    public class UserService : IUserService
+    public class UserService : IUserService, IDependency
     {
         IBaseService baseService;
         public UserService(IBaseService _baseService)

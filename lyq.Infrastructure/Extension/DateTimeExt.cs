@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace lyq.Infrastructure.Extension
 {
@@ -13,10 +11,13 @@ namespace lyq.Infrastructure.Extension
         /// </summary>
         /// <param name="target"></param>
         /// <returns></returns>
-        public static double ToUnixTimestamp(this DateTime target)
+        public static long ToUnixTimestamp(this DateTime target)
         {
-               DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            return Math.Floor((target - origin).TotalSeconds);
+            DateTimeOffset dto = new DateTimeOffset(target, TimeSpan.Zero);
+
+            var ticks = DateTimeOffset.Now.ToUnixTimeSeconds();
+
+            return ticks;
         }
 
         /// <summary>
@@ -24,9 +25,11 @@ namespace lyq.Infrastructure.Extension
         /// </summary>
         /// <param name="unixTime">This Unix Timestamp</param>
         /// <returns></returns>
-        public static DateTime FromUnixTimestamp(this double unixTime)
+        public static DateTime FromUnixTimestamp(this long unixTime)
         {
-            return new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(unixTime);
+            DateTimeOffset dto = new DateTimeOffset(unixTime, TimeSpan.Zero);
+
+            return dto.DateTime;
         }
 
         /// <summary>

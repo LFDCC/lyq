@@ -1,5 +1,6 @@
 ﻿using lyq.Entities;
 using lyq.EntityFramework;
+using lyq.Infrastructure.Ioc;
 using lyq.IService;
 using System;
 using System.Data.Entity;
@@ -10,7 +11,7 @@ using Z.EntityFramework.Plus;
 
 namespace lyq.Service
 {
-    public class BaseService : IBaseService
+    public class BaseService : IBaseService, IDependency
     {
         protected lyqContext dbContext = new lyqContext();
 

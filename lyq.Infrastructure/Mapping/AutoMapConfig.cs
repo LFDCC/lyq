@@ -16,10 +16,13 @@ namespace lyq.Infrastructure.Mapping
         {
             Mapper.Initialize(ctx =>
             {
+                var baseType = typeof(IMapper);
+
                 var assemblys = BuildManager.GetReferencedAssemblies().Cast<Assembly>();//获取所有程序集
+               
                 foreach (var assembly in assemblys)
                 {
-                    var types = assembly.GetTypes().Where(t => t.Name.EndsWith("Dto"));//获取Dto类
+                    var types = assembly.GetTypes().Where(t =>baseType.IsAssignableFrom(t));//获取所有实现IMapper接口的类
                     foreach (Type type in types)
                     {
                         AutoMapAttribute autoMapAttribute = type.GetCustomAttribute(typeof(AutoMapAttribute), false).As<AutoMapAttribute>();

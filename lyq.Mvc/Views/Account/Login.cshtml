@@ -79,7 +79,7 @@
                     },
                     success: function (res) {
                         if (res.status == 200) {
-                            location.href = res.data;
+                            location.replace(res.data);
                         } else {
                             nprogress.done();
                             index = layer.alert(res.msg, { icon: 5 });
@@ -107,7 +107,7 @@
             });
 
             $("#imgCheckCode").on("click", function () {
-                $(this).attr('src', '/Account/GetCheckCode/' + new Date().getTime());
+                $(this).attr('src', '@Url.Action("GetCheckCode")/' + new Date().getTime());
             })
             $(document).on("keydown", function (event) {
                 if (event.keyCode == 13) {

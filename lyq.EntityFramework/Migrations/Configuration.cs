@@ -13,7 +13,7 @@ namespace lyq.EntityFramework.Migrations
         {
             //也可以手动迁移，再把生成的SQL拿到服务器上执行
             AutomaticMigrationsEnabled = true;//每次启动项目自动迁移
-            //AutomaticMigrationDataLossAllowed = true;//允许自动迁移数据丢失，也可以使用add-migragion确认更改
+            AutomaticMigrationDataLossAllowed = false;//允许自动迁移数据丢失，也可以使用add-migragion确认更改
         }
 
         protected override void Seed(lyqContext context)

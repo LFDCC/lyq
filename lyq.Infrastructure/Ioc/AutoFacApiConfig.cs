@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace lyq.Infrastructure.Ioc
 {
-    public class AutoFacConfig
+    public class AutoFacApiConfig
     {
         /// <summary>
         /// IOC 容器
@@ -44,14 +44,14 @@ namespace lyq.Infrastructure.Ioc
         {
             var builder = new ContainerBuilder();
 
+            var baseType = typeof(IDependency);
+
             var assemblys = BuildManager.GetReferencedAssemblies().Cast<Assembly>();//获取所有的程序集
 
             builder.RegisterAssemblyTypes(assemblys.ToArray())
-            .Where(t => t.Name.EndsWith("Service"))//注册所有的应用Service类
+            .Where(t => baseType.IsAssignableFrom(t) && !t.IsAbstract)//注册所有实现IDependency接口的类
             .AsImplementedInterfaces().InstancePerLifetimeScope();
             
-            builder.RegisterType<Logger>().As<ILogger>().InstancePerLifetimeScope();
-
             builder.RegisterFilterProvider();//注册到筛选器   
             builder.RegisterControllers(Assembly.GetCallingAssembly());//注册mvc容器的实现                
 

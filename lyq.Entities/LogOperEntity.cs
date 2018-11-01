@@ -3,24 +3,19 @@ using System;
 
 namespace lyq.Entities
 {
-    public class LogEntity : BaseEntity, ICreateAudited
+    /// <summary>
+    /// 操作日志
+    /// </summary>
+    public class LogOperEntity : BaseEntity, ICreateEntity
     {
-        /// <summary>
-        /// Controller名称
-        /// </summary>
-        public string ControllerName { get; set; }
-        /// <summary>
-        /// Action名称
-        /// </summary>
-        public string ActionName { get; set; }
-        /// <summary>
-        /// Post/Get
-        /// </summary>
-        public string Method { get; set; }
         /// <summary>
         /// 请求的地址
         /// </summary>
         public string RequestUrl { get; set; }
+        /// <summary>
+        /// 请求方式
+        /// </summary>
+        public string Method { get; set; }
         /// <summary>
         /// Query参数
         /// </summary>
@@ -30,13 +25,21 @@ namespace lyq.Entities
         /// </summary>
         public string Form { get; set; }
         /// <summary>
-        /// 日志信息
+        /// 客户端描述
+        /// </summary>
+        public string Client { get; set; }
+        /// <summary>
+        /// IP地址
+        /// </summary>
+        public string IP { get; set; }
+        /// <summary>
+        /// 操作耗时（ms）
+        /// </summary>
+        public long ElapsedTime { get; set; }
+        /// <summary>
+        /// 日志信息，操作描述
         /// </summary>
         public string Message { get; set; }
-        /// <summary>
-        /// 1 Error 2 Warn 3 Info 4 Debug
-        /// </summary>
-        public int Level { get; set; }
 
         public int? CreateUserId { get; set; }
 

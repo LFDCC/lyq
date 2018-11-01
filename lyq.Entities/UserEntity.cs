@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace lyq.Entities
 {
-    public class UserEntity : BaseEntity, IDeleteAudited
+    public class UserEntity : BaseEntity, IDeleteEntity
     {
         /// <summary>
         /// 用户名

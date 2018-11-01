@@ -4,26 +4,18 @@ using System;
 
 namespace lyq.Dto
 {
-    [AutoMap(typeof(LogEntity))]
-    public class LogDto
+    [AutoMap(typeof(LogErrorEntity))]
+    public class LogErrorDto : IMapper
     {
         public int Id { get; set; }
-        /// <summary>
-        /// Controller名称
-        /// </summary>
-        public string ControllerName { get; set; }
-        /// <summary>
-        /// Action名称
-        /// </summary>
-        public string ActionName { get; set; }
-        /// <summary>
-        /// Post/Get
-        /// </summary>
-        public string Method { get; set; }
         /// <summary>
         /// 请求的地址
         /// </summary>
         public string RequestUrl { get; set; }
+        /// <summary>
+        /// 请求方式
+        /// </summary>
+        public string Method { get; set; }
         /// <summary>
         /// Query参数
         /// </summary>
@@ -33,13 +25,17 @@ namespace lyq.Dto
         /// </summary>
         public string Form { get; set; }
         /// <summary>
-        /// 日志信息
+        /// 错误信息
         /// </summary>
         public string Message { get; set; }
         /// <summary>
-        /// 1 Error 2 Warn 3 Info 4 Debug
+        /// 客户端描述
         /// </summary>
-        public int Level { get; set; }
+        public string Client { get; set; }
+        /// <summary>
+        /// IP地址
+        /// </summary>
+        public string IP { get; set; }
 
         public int? CreateUserId { get; set; }
 

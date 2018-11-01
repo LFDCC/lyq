@@ -5,6 +5,6 @@ namespace lyq.IService
 {
     public interface ILogService
     {
-        Task<int> AddAsync(LogDto logDto);
+        Task<int> AddAsync(LogErrorDto logDto);
     }
 }

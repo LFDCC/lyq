@@ -1,13 +1,13 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-using System.Web.Optimization;
-using System.Web.Routing;
+﻿using lyq.Infrastructure.Extension;
 using lyq.Infrastructure.Ioc;
+using lyq.Infrastructure.Log;
 using lyq.Infrastructure.Mapping;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
+using System.Web.Mvc;
+using System.Web.Optimization;
+using System.Web.Routing;
 
 [assembly: OwinStartup(typeof(lyq.Mvc.Startup))]
 
@@ -29,8 +29,9 @@ namespace lyq.Mvc
                 LogoutPath = CookieAuthenticationDefaults.LogoutPath,//Account/Logout
                 ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter,//ReturnUrl
             });
+            LoggerConfig.RegisterLog4net("/Configs/log4net.config");
             AutoMapConfig.RegisterMapper();
-            AutoFacConfig.RegisterContainer();
+            AutoFacMvcConfig.RegisterContainer();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

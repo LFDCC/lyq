@@ -48,42 +48,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="lyqContext.cs" />
-    <Compile Include="Mapping\LogMapping.cs" />
+    <Compile Include="Mapping\LogConMapping.cs" />
+    <Compile Include="Mapping\LogOperMapping.cs" />
+    <Compile Include="Mapping\LogErrorMapping.cs" />
     <Compile Include="Mapping\MenuMapping.cs" />
     <Compile Include="Mapping\PostMapping.cs" />
     <Compile Include="Mapping\RoleMapping.cs" />
     <Compile Include="Mapping\UserMapping.cs" />
-    <Compile Include="Migrations\201810070817431_addunique.cs" />
-    <Compile Include="Migrations\201810070817431_addunique.Designer.cs">
-      <DependentUpon>201810070817431_addunique.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810070833505_addroleformenu.cs" />
-    <Compile Include="Migrations\201810070833505_addroleformenu.Designer.cs">
-      <DependentUpon>201810070833505_addroleformenu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810070839335_test.cs" />
-    <Compile Include="Migrations\201810070839335_test.Designer.cs">
-      <DependentUpon>201810070839335_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810131107598_test1.cs" />
-    <Compile Include="Migrations\201810131107598_test1.Designer.cs">
-      <DependentUpon>201810131107598_test1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810131109272_test2.cs" />
-    <Compile Include="Migrations\201810131109272_test2.Designer.cs">
-      <DependentUpon>201810131109272_test2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810171227109_longtoint32.cs" />
-    <Compile Include="Migrations\201810171227109_longtoint32.Designer.cs">
-      <DependentUpon>201810171227109_longtoint32.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810210921302_updatelogentit.cs" />
-    <Compile Include="Migrations\201810210921302_updatelogentit.Designer.cs">
-      <DependentUpon>201810210921302_updatelogentit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810211220553_update.cs" />
-    <Compile Include="Migrations\201810211220553_update.Designer.cs">
-      <DependentUpon>201810211220553_update.cs</DependentUpon>
+    <Compile Include="Migrations\201811011315561_InitialCreate.cs" />
+    <Compile Include="Migrations\201811011315561_InitialCreate.Designer.cs">
+      <DependentUpon>201811011315561_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,29 +77,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810070817431_addunique.resx">
-      <DependentUpon>201810070817431_addunique.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810070833505_addroleformenu.resx">
-      <DependentUpon>201810070833505_addroleformenu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810070839335_test.resx">
-      <DependentUpon>201810070839335_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810131107598_test1.resx">
-      <DependentUpon>201810131107598_test1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810131109272_test2.resx">
-      <DependentUpon>201810131109272_test2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810171227109_longtoint32.resx">
-      <DependentUpon>201810171227109_longtoint32.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810210921302_updatelogentit.resx">
-      <DependentUpon>201810210921302_updatelogentit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810211220553_update.resx">
-      <DependentUpon>201810211220553_update.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811011315561_InitialCreate.resx">
+      <DependentUpon>201811011315561_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

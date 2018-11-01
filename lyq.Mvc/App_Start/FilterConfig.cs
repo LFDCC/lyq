@@ -9,7 +9,7 @@ namespace lyq.Mvc
         {
             filters.Add(new ExceptionFilterAttribute());
             filters.Add(new AuthorizeFilterAttribute());
-            filters.Add(new JsonNetFilterAttribute());
+            filters.Add(new JsonFilterAttribute());
         }
     }
 }

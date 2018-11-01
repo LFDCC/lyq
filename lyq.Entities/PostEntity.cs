@@ -3,7 +3,7 @@ using System;
 
 namespace lyq.Entities
 {
-    public class PostEntity :BaseEntity,ICreateAudited
+    public class PostEntity :BaseEntity,ICreateEntity
     {
         /// <summary>
         /// 标题

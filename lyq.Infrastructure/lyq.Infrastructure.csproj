@@ -79,8 +79,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ioc\AutoFacApiConfig.cs" />
+    <Compile Include="Ioc\IDependency.cs" />
     <Compile Include="Log\ILogger.cs" />
     <Compile Include="Log\Logger.cs" />
+    <Compile Include="Log\LoggerConfig.cs" />
     <Compile Include="Mapping\AutoMapAttribute.cs" />
     <Compile Include="Mapping\AutoMapConfig.cs" />
     <Compile Include="Extension\CollectionExt.cs" />
@@ -90,8 +93,9 @@
     <Compile Include="Extension\MapperExt.cs" />
     <Compile Include="Extension\ObjectExt.cs" />
     <Compile Include="Extension\StringExt.cs" />
+    <Compile Include="Mapping\IMapper.cs" />
     <Compile Include="Web\HttpResult.cs" />
-    <Compile Include="Ioc\AutoFacConfig.cs" />
+    <Compile Include="Ioc\AutoFacMvcConfig.cs" />
     <Compile Include="Web\JsonNetResult.cs" />
     <Compile Include="Web\Paging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,9 +111,6 @@
   <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
-    <Content Include="Log\log4net.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

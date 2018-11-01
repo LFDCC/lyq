@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
-    <Compile Include="LogEntity.cs" />
+    <Compile Include="LogOperEntity.cs" />
+    <Compile Include="LogConEntity.cs" />
+    <Compile Include="LogErrorEntity.cs" />
     <Compile Include="MenuEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PostEntity.cs" />

@@ -5,7 +5,7 @@ using System;
 namespace lyq.Dto
 {
     [AutoMap(typeof(UserEntity))]
-    public class UserDto
+    public class UserDto : IMapper
     {
         public long Id { get; set; }
         /// <summary>

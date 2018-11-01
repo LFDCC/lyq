@@ -1,29 +1,19 @@
 ﻿using log4net;
+using lyq.Infrastructure.Ioc;
 using System;
-using System.IO;
-using System.Web;
 
 namespace lyq.Infrastructure.Log
 {
-    public class Logger : ILogger
+    public class Logger : ILogger, IDependency
     {
-        private ILog logger;
-        public Logger()
-        {
-            logger = LogManager.GetLogger(GetType());
-        }
-        static Logger()
-        {
-            FileInfo configFile = new FileInfo(HttpContext.Current.Server.MapPath("/bin/Log/log4net.config"));
-            log4net.Config.XmlConfigurator.Configure(configFile);
-        }
+        private ILog logger = LogManager.GetLogger(typeof(Logger));
         public void CreateLogger(Type type)
         {
             logger = LogManager.GetLogger(type);
         }
         public void Debug(object message)
         {
-            logger.Debug(message);
+            logger.Debug(message);            
         }
         public void Error(object message)
         {
