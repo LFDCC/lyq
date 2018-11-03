@@ -1,10 +1,8 @@
-﻿using lyq.IEntities;
-using System;
-using System.Collections.Generic;
+﻿using System;
 
 namespace lyq.Entities
 {
-    public class UserEntity : BaseEntity, IDeleteEntity
+    public class UserEntity : BaseEntity
     {
         /// <summary>
         /// 用户名

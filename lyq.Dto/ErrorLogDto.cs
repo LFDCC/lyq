@@ -1,13 +1,13 @@
-﻿using lyq.IEntities;
+﻿using lyq.Entities;
+using lyq.Infrastructure.Mapping;
 using System;
 
-namespace lyq.Entities
+namespace lyq.Dto
 {
-    /// <summary>
-    /// 操作日志
-    /// </summary>
-    public class LogOperEntity : BaseEntity, ICreateEntity
+    [AutoMap(typeof(ErrorLogEntity))]
+    public class ErrorLogDto : IMapper
     {
+        public int Id { get; set; }
         /// <summary>
         /// 请求的地址
         /// </summary>
@@ -25,24 +25,20 @@ namespace lyq.Entities
         /// </summary>
         public string Form { get; set; }
         /// <summary>
-        /// 客户端描述
-        /// </summary>
-        public string Client { get; set; }
-        /// <summary>
-        /// IP地址
-        /// </summary>
-        public string IP { get; set; }
-        /// <summary>
-        /// 操作耗时（ms）
-        /// </summary>
-        public long ElapsedTime { get; set; }
-        /// <summary>
-        /// 日志信息，操作描述
+        /// 错误信息
         /// </summary>
         public string Message { get; set; }
-
-        public int? CreateUserId { get; set; }
-
-        public DateTime? CreateTime { get; set; }
+        /// <summary>
+        /// 客户端名称
+        /// </summary>
+        public string ClientName { get; set; }
+        /// <summary>
+        /// 客户端IP
+        /// </summary>
+        public string ClientIP { get; set; }
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreateTime { get; set; } = DateTime.Now;
     }
 }

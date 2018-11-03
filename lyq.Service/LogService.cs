@@ -14,10 +14,27 @@ namespace lyq.Service
         {
             baseService = _baseService;
         }
-
-        public Task<int> AddAsync(LogErrorDto logDto)
+        /// <summary>
+        /// 添加错误日志
+        /// </summary>
+        /// <param name="logDto"></param>
+        /// <returns></returns>
+        public Task<int> AddErrorLogAsync(ErrorLogDto logDto)
         {
-            var logEntity = logDto.MapTo<LogErrorEntity>();
+            var logEntity = logDto.MapTo<ErrorLogEntity>();
+            baseService.Add(logEntity);
+            Task<int> result = baseService.SaveAsync();
+
+            return result;
+        }
+        /// <summary>
+        /// 添加登录日志
+        /// </summary>
+        /// <param name="logDto"></param>
+        /// <returns></returns>
+        public Task<int> AddLoginLogAsync(LoginLogDto logDto)
+        {
+            var logEntity = logDto.MapTo<LoginLogEntity>();
             baseService.Add(logEntity);
             Task<int> result = baseService.SaveAsync();
 

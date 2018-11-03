@@ -1,36 +1,35 @@
-﻿using lyq.IEntities;
-using System;
+﻿using System;
 
 namespace lyq.Entities
 {
     /// <summary>
     /// 登录日志
     /// </summary>
-    public class LogConEntity : BaseEntity, ICreateEntity
+    public class LoginLogEntity : BaseEntity
     {
         /// <summary>
         /// 登录名
         /// </summary>
         public string LoginName { get; set; }
         /// <summary>
-        /// 客户端描述
+        /// 客户端名称
         /// </summary>
-        public string Client { get; set; }
+        public string ClientName { get; set; }
         /// <summary>
         /// IP地址
         /// </summary>
-        public string IP { get; set; }
+        public string ClientIP { get; set; }
         /// <summary>
         /// 操作耗时（ms）
         /// </summary>
         public long ElapsedTime { get; set; }
         /// <summary>
-        /// 日志信息
+        /// 是否成功
         /// </summary>
-        public string Message { get; set; }
-
-        public int? CreateUserId { get; set; }
-
-        public DateTime? CreateTime { get; set; }
+        public bool IsSuccess { get; set; }
+        /// <summary>
+        /// 登录时间
+        /// </summary>
+        public DateTime CreateTime { get; set; }
     }
 }

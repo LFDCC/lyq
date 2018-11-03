@@ -1,8 +1,6 @@
-﻿using lyq.IEntities;
-
-namespace lyq.Entities
+﻿namespace lyq.Entities
 {
-    public class BaseEntity: IBaseEntity
+    public class BaseEntity
     {
         public int Id { get; set; }        
     }

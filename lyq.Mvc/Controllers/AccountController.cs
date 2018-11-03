@@ -29,10 +29,9 @@ namespace lyq.Web.Controllers
             return View();
         }
         [HttpPost]
-        [LogFilter(IntoDb = false)]
+        [LogFilter]
         public async Task<ActionResult> Login(string username, string password, string checkcode, string returnUrl)
         {
-            throw new Exception("出错啦");
             string sessionCode = Session["checkcode"]?.ToString();
             if (sessionCode == null)
             {
@@ -40,6 +39,7 @@ namespace lyq.Web.Controllers
             }
             else if (sessionCode.ToLower() != checkcode.ToLower())
             {
+                throw new Exception("出错啦");
                 return Json(new HttpResult { status = ResultState.fail, msg = "验证码错误！" });
             }
             else

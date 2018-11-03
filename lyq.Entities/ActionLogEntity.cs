@@ -1,12 +1,11 @@
-﻿using lyq.IEntities;
-using System;
+﻿using System;
 
 namespace lyq.Entities
 {
     /// <summary>
-    /// 错误日志
+    /// 操作日志
     /// </summary>
-    public class LogErrorEntity : BaseEntity, ICreateEntity
+    public class ActionLogEntity : BaseEntity
     {
         /// <summary>
         /// 请求的地址
@@ -25,20 +24,24 @@ namespace lyq.Entities
         /// </summary>
         public string Form { get; set; }
         /// <summary>
-        /// 错误信息
+        /// 客户端名称
         /// </summary>
-        public string Message { get; set; }
+        public string ClientName { get; set; }
         /// <summary>
-        /// 客户端描述
+        /// 客户端IP
         /// </summary>
-        public string Client { get; set; }
+        public string ClientIP { get; set; }
         /// <summary>
-        /// IP地址
+        /// 操作耗时（ms）
         /// </summary>
-        public string IP { get; set; }
-
-        public int? CreateUserId { get; set; }
-
-        public DateTime? CreateTime { get; set; }
+        public long ElapsedTime { get; set; }
+        /// <summary>
+        /// 操作人
+        /// </summary>
+        public int CreateUserId { get; set; }
+        /// <summary>
+        /// 操作时间
+        /// </summary>
+        public DateTime CreateTime { get; set; }
     }
 }

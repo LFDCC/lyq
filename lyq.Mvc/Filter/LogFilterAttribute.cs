@@ -9,15 +9,10 @@ using System.Web.WebPages;
 namespace lyq.Mvc.Filter
 {
     /// <summary>
-    /// 记录日志
+    /// 登录日志
     /// </summary>
     public class LogFilterAttribute : ActionFilterAttribute
     {
-        /// <summary>
-        /// 是否记录到数据库
-        /// </summary>
-        public bool IntoDb { get; set; } = true;
-
         public ILogger logger { get; set; }
 
         public ILogService logService { get; set; }
@@ -32,36 +27,44 @@ namespace lyq.Mvc.Filter
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             stopWatch.Start();
+            base.OnActionExecuting(filterContext);
         }
 
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            var flag = filterContext.ActionDescriptor.IsDefined(typeof(LogFilterAttribute), true) || filterContext.ActionDescriptor.ControllerDescriptor.IsDefined(typeof(LogFilterAttribute), true);
-            if (flag)
-            {
-                var method = filterContext.HttpContext.Request.HttpMethod;
-                var requestUrl = filterContext.HttpContext.Request.Url.AbsoluteUri;
-                var controller = filterContext.RouteData.Values["controller"].ToString();
-                var action = filterContext.RouteData.Values["action"].ToString();
-                var query = filterContext.HttpContext.Request.Url.Query;
-                var form = string.Join("&", filterContext.HttpContext.Request.Form.AllKeys.Select(t => $"{t}={filterContext.HttpContext.Request.Form[t]}"));
+            //var flag = filterContext.ActionDescriptor.IsDefined(typeof(LogFilterAttribute), true) || filterContext.ActionDescriptor.ControllerDescriptor.IsDefined(typeof(LogFilterAttribute), true);
+            //if (flag)
+            //{
+            //    var method = filterContext.HttpContext.Request.HttpMethod;
+            //    var requestUrl = filterContext.HttpContext.Request.Url.AbsoluteUri;
+            //    var controller = filterContext.RouteData.Values["controller"].ToString();
+            //    var action = filterContext.RouteData.Values["action"].ToString();
+            //    var query = filterContext.HttpContext.Request.Url.Query;
+            //    var form = string.Join("&", filterContext.HttpContext.Request.Form.AllKeys.Select(t => $"{t}={filterContext.HttpContext.Request.Form[t]}"));
 
-                stopWatch.Stop();
-                if (IntoDb)
-                {
-                    logService.AddAsync(new LogErrorDto
-                    {
-                        Message = $"用时：{stopWatch.Elapsed.TotalMilliseconds}ms",
-                        Method = method,
-                        RequestUrl = requestUrl,
-                        Query = query,
-                        Form = form,
-                        CreateUserId = filterContext.HttpContext.User.Identity.Name.As<int>()
-                    });
-                }
-                logger.Info($"控制器：{controller}，Action：{action}，query：{query}，form：{form}，times：{stopWatch.Elapsed.TotalMilliseconds}ms");
-            }
+            //    stopWatch.Stop();
+
+            //    //logService.AddLoginLogAsync(new LoginLogDto
+            //    //{
+            //    //    Message = $"用时：{stopWatch.Elapsed.TotalMilliseconds}ms",
+            //    //    Method = method,
+            //    //    RequestUrl = requestUrl,
+            //    //    Query = query,
+            //    //    Form = form
+            //    //});
+
+            //    logger.Info($"控制器：{controller}，Action：{action}，query：{query}，form：{form}，times：{stopWatch.Elapsed.TotalMilliseconds}ms");
+            //}
             base.OnActionExecuted(filterContext);
+        }
+
+        public override void OnResultExecuting(ResultExecutingContext filterContext)
+        {
+            base.OnResultExecuting(filterContext);
+        }
+        public override void OnResultExecuted(ResultExecutedContext filterContext)
+        {
+            base.OnResultExecuted(filterContext);
         }
     }
 }

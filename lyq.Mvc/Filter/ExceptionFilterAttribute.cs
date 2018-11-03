@@ -1,5 +1,4 @@
 ﻿using lyq.Dto;
-using lyq.Infrastructure.Extension;
 using lyq.Infrastructure.Ioc;
 using lyq.Infrastructure.Log;
 using lyq.Infrastructure.Web;
@@ -7,7 +6,6 @@ using lyq.IService;
 using System;
 using System.Linq;
 using System.Web.Mvc;
-using System.Web.WebPages;
 
 namespace lyq.Mvc.Filter
 {
@@ -29,19 +27,18 @@ namespace lyq.Mvc.Filter
             var query = filterContext.HttpContext.Request.Url.Query;
             var form = string.Join("&", filterContext.HttpContext.Request.Form.AllKeys.Select(t => $"{t}={filterContext.HttpContext.Request.Form[t]}"));
 
-            logService.AddAsync(new LogErrorDto
+            logService.AddErrorLogAsync(new ErrorLogDto
             {
                 RequestUrl = requestUrl,
-                Message = message,
+                Message = $"异常描述：{message}\r\n 堆栈信息：{stackTrace}",
                 Method = method,
                 Query = query,
                 Form = form,
-                IP = ip,
-                Client = client,
-                CreateUserId = filterContext.HttpContext.User.Identity.Name.As<int>()
+                ClientIP = ClientIP(filterContext),
+                ClientName = client
             });
 
-            logger.Error($"异常描述：{message}\r\n 堆栈信息：{stackTrace}");
+            logger.Error($"\r\n 异常描述：{message}\r\n 堆栈信息：{stackTrace}");
 
 
             if (filterContext.HttpContext.Request.IsAjaxRequest())
@@ -56,6 +53,25 @@ namespace lyq.Mvc.Filter
             {
                 base.OnException(filterContext);
             }
+        }
+
+        /// <summary>
+        /// 客户端IP
+        /// </summary>
+        /// <returns></returns>
+        private static string ClientIP(ExceptionContext filterContext)
+        {
+            string result = filterContext.HttpContext.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            if (null == result || result == String.Empty)
+            {
+                result = filterContext.HttpContext.Request.ServerVariables["REMOTE_ADDR"];
+            }
+
+            if (null == result || result == String.Empty)
+            {
+                result = filterContext.HttpContext.Request.UserHostAddress;
+            }
+            return result;
         }
     }
 }

@@ -25,7 +25,7 @@
         public virtual DbSet<PostEntity> PostEntities { get; set; }
         public virtual DbSet<MenuEntity> MenuEntities { get; set; }
         public virtual DbSet<RoleEntity> RoleEntities { get; set; }
-        public virtual DbSet<LogErrorEntity> LogEntities { get; set; }
+        public virtual DbSet<ErrorLogEntity> LogEntities { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

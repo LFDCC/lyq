@@ -1,13 +1,12 @@
-﻿using lyq.Entities;
-using lyq.Infrastructure.Mapping;
-using System;
+﻿using System;
 
-namespace lyq.Dto
+namespace lyq.Entities
 {
-    [AutoMap(typeof(LogErrorEntity))]
-    public class LogErrorDto : IMapper
+    /// <summary>
+    /// 错误日志
+    /// </summary>
+    public class ErrorLogEntity : BaseEntity
     {
-        public int Id { get; set; }
         /// <summary>
         /// 请求的地址
         /// </summary>
@@ -29,16 +28,16 @@ namespace lyq.Dto
         /// </summary>
         public string Message { get; set; }
         /// <summary>
-        /// 客户端描述
+        /// 客户端名称
         /// </summary>
-        public string Client { get; set; }
+        public string ClientName { get; set; }
         /// <summary>
-        /// IP地址
+        /// 客户端IP
         /// </summary>
-        public string IP { get; set; }
-
-        public int? CreateUserId { get; set; }
-
-        public DateTime? CreateTime { get; set; } = DateTime.Now;
+        public string ClientIP { get; set; }
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreateTime { get; set; }
     }
 }

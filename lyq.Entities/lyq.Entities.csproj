@@ -41,20 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
-    <Compile Include="LogOperEntity.cs" />
-    <Compile Include="LogConEntity.cs" />
-    <Compile Include="LogErrorEntity.cs" />
+    <Compile Include="ActionLogEntity.cs" />
+    <Compile Include="LoginLogEntity.cs" />
+    <Compile Include="ErrorLogEntity.cs" />
     <Compile Include="MenuEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PostEntity.cs" />
     <Compile Include="RoleEntity.cs" />
     <Compile Include="UserEntity.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\lyq.IEntities\lyq.IEntities.csproj">
-      <Project>{dae36904-3c93-49a0-a4d9-89a8da45dedf}</Project>
-      <Name>lyq.IEntities</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
