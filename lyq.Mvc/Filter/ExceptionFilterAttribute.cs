@@ -3,7 +3,6 @@ using lyq.Infrastructure.Ioc;
 using lyq.Infrastructure.Log;
 using lyq.Infrastructure.Web;
 using lyq.IService;
-using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -62,12 +61,12 @@ namespace lyq.Mvc.Filter
         private static string ClientIP(ExceptionContext filterContext)
         {
             string result = filterContext.HttpContext.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
-            if (null == result || result == String.Empty)
+            if (null == result || result == string.Empty)
             {
                 result = filterContext.HttpContext.Request.ServerVariables["REMOTE_ADDR"];
             }
 
-            if (null == result || result == String.Empty)
+            if (null == result || result == string.Empty)
             {
                 result = filterContext.HttpContext.Request.UserHostAddress;
             }

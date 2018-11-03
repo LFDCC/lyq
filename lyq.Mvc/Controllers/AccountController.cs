@@ -29,7 +29,7 @@ namespace lyq.Web.Controllers
             return View();
         }
         [HttpPost]
-        [LogFilter]
+        [LoginFilter]
         public async Task<ActionResult> Login(string username, string password, string checkcode, string returnUrl)
         {
             string sessionCode = Session["checkcode"]?.ToString();
@@ -39,7 +39,6 @@ namespace lyq.Web.Controllers
             }
             else if (sessionCode.ToLower() != checkcode.ToLower())
             {
-                throw new Exception("出错啦");
                 return Json(new HttpResult { status = ResultState.fail, msg = "验证码错误！" });
             }
             else
@@ -69,7 +68,7 @@ namespace lyq.Web.Controllers
 
                         HttpContext.GetOwinContext().Authentication.SignIn(identity);
 
-                        return Json(new HttpResult { status = ResultState.success, data = returnUrl.IsNullOrWhiteSpace() ? "/Home/Index" : returnUrl });
+                        return Json(new HttpResult { status = ResultState.success, msg = "成功", data = returnUrl.IsNullOrWhiteSpace() ? "/Home/Index" : returnUrl });
                     }
                 }
             }
