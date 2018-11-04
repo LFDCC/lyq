@@ -9,9 +9,11 @@ namespace lyq.EntityFramework.Mapping
         {
             ToTable("Sys_Log_Login");
             HasKey(t => t.Id);
-            Property(t => t.LoginName).HasMaxLength(50);
-            Property(t => t.ClientName).HasMaxLength(100);
+            HasIndex(t => t.UserName);
+            Property(t => t.UserName).HasMaxLength(50);
+            Property(t => t.ClientName).HasMaxLength(200);
             Property(t => t.ClientIP).HasMaxLength(20);
+            Property(t => t.Message).HasMaxLength(20);
 
         }
     }

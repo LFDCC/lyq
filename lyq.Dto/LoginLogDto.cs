@@ -9,9 +9,9 @@ namespace lyq.Dto
     {
         public int Id { get; set; }
         /// <summary>
-        /// 登录名
+        /// 用户名
         /// </summary>
-        public string LoginName { get; set; }
+        public string UserName { get; set; }
         /// <summary>
         /// 客户端名称
         /// </summary>
@@ -28,6 +28,10 @@ namespace lyq.Dto
         /// 是否成功
         /// </summary>
         public bool IsSuccess { get; set; }
+        /// <summary>
+        /// 描述
+        /// </summary>
+        public string Message { get; set; }
         /// <summary>
         /// 登录时间
         /// </summary>

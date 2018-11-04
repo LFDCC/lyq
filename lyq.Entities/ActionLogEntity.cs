@@ -8,6 +8,10 @@ namespace lyq.Entities
     public class ActionLogEntity : BaseEntity
     {
         /// <summary>
+        /// 用户名
+        /// </summary>
+        public string UserName { get; set; }
+        /// <summary>
         /// 请求的地址
         /// </summary>
         public string RequestUrl { get; set; }
@@ -35,10 +39,6 @@ namespace lyq.Entities
         /// 操作耗时（ms）
         /// </summary>
         public long ElapsedTime { get; set; }
-        /// <summary>
-        /// 操作人
-        /// </summary>
-        public int CreateUserId { get; set; }
         /// <summary>
         /// 操作时间
         /// </summary>

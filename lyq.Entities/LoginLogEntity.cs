@@ -8,9 +8,9 @@ namespace lyq.Entities
     public class LoginLogEntity : BaseEntity
     {
         /// <summary>
-        /// 登录名
+        /// 用户名
         /// </summary>
-        public string LoginName { get; set; }
+        public string UserName { get; set; }
         /// <summary>
         /// 客户端名称
         /// </summary>
@@ -27,6 +27,10 @@ namespace lyq.Entities
         /// 是否成功
         /// </summary>
         public bool IsSuccess { get; set; }
+        /// <summary>
+        /// 描述
+        /// </summary>
+        public string Message { get; set; }
         /// <summary>
         /// 登录时间
         /// </summary>
