@@ -15,7 +15,7 @@ namespace lyq.EntityFramework.Mapping
             Property(t => t.ClientIP).HasMaxLength(20);
             Property(t => t.Query).HasMaxLength(1000);
             Property(t => t.Form).HasMaxLength(1000);
-            Property(t => t.Message).HasMaxLength(2000) ;
+            Property(t => t.Message).HasMaxLength(4000) ;
 
         }
     }

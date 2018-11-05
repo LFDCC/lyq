@@ -32,6 +32,7 @@ namespace lyq.Web.Controllers
         [LoginFilter]
         public async Task<ActionResult> Login(string username, string password, string checkcode, string returnUrl)
         {
+            throw new Exception("error");
             string sessionCode = Session["checkcode"]?.ToString();
             if (sessionCode == null)
             {

@@ -94,6 +94,7 @@
     <Compile Include="Extension\ObjectExt.cs" />
     <Compile Include="Extension\StringExt.cs" />
     <Compile Include="Mapping\IMapper.cs" />
+    <Compile Include="Network\Net.cs" />
     <Compile Include="Web\HttpResult.cs" />
     <Compile Include="Ioc\AutoFacMvcConfig.cs" />
     <Compile Include="Web\JsonNetResult.cs" />
@@ -111,7 +112,9 @@
   <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

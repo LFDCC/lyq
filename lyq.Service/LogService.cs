@@ -2,7 +2,9 @@
 using lyq.Entities;
 using lyq.Infrastructure.Extension;
 using lyq.Infrastructure.Ioc;
+using lyq.Infrastructure.Log;
 using lyq.IService;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace lyq.Service
@@ -19,12 +21,11 @@ namespace lyq.Service
         /// </summary>
         /// <param name="logDto"></param>
         /// <returns></returns>
-        public Task<int> AddErrorLogAsync(ErrorLogDto logDto)
+        public async Task<int> AddErrorLogAsync(ErrorLogDto logDto)
         {
             var logEntity = logDto.MapTo<ErrorLogEntity>();
             baseService.Add(logEntity);
-            Task<int> result = baseService.SaveAsync();
-
+            var result =await baseService.SaveAsync();
             return result;
         }
         /// <summary>

@@ -1,9 +1,12 @@
 ﻿using lyq.Dto;
 using lyq.Infrastructure.Ioc;
 using lyq.Infrastructure.Log;
+using lyq.Infrastructure.Network;
 using lyq.Infrastructure.Web;
 using lyq.IService;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace lyq.Mvc.Filter
@@ -25,7 +28,7 @@ namespace lyq.Mvc.Filter
             var client = filterContext.HttpContext.Request.UserAgent;
             var query = filterContext.HttpContext.Request.Url.Query;
             var form = string.Join("&", filterContext.HttpContext.Request.Form.AllKeys.Select(t => $"{t}={filterContext.HttpContext.Request.Form[t]}"));
-
+            
             logService.AddErrorLogAsync(new ErrorLogDto
             {
                 RequestUrl = requestUrl,
@@ -33,10 +36,9 @@ namespace lyq.Mvc.Filter
                 Method = method,
                 Query = query,
                 Form = form,
-                ClientIP = ClientIP(filterContext),
+                ClientIP = Net.Ip,
                 ClientName = client
             });
-
             logger.Error($"\r\n 异常描述：{message}\r\n 堆栈信息：{stackTrace}");
 
 
@@ -52,25 +54,6 @@ namespace lyq.Mvc.Filter
             {
                 base.OnException(filterContext);
             }
-        }
-
-        /// <summary>
-        /// 客户端IP
-        /// </summary>
-        /// <returns></returns>
-        private static string ClientIP(ExceptionContext filterContext)
-        {
-            string result = filterContext.HttpContext.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
-            if (null == result || result == string.Empty)
-            {
-                result = filterContext.HttpContext.Request.ServerVariables["REMOTE_ADDR"];
-            }
-
-            if (null == result || result == string.Empty)
-            {
-                result = filterContext.HttpContext.Request.UserHostAddress;
-            }
-            return result;
         }
     }
 }
