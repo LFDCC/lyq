@@ -5,13 +5,14 @@ using lyq.Infrastructure.Network;
 using lyq.Infrastructure.Web;
 using lyq.IService;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace lyq.Mvc.Filter
 {
-    public class ExceptionFilterAttribute : HandleErrorAttribute
+    /// <summary>
+    /// 异常监控
+    /// </summary>
+    public class ExceptionMonitoringAttribute : HandleErrorAttribute
     {
         ILogger logger = AutoFacMvcConfig.Resolve<ILogger>();
 
@@ -23,8 +24,7 @@ namespace lyq.Mvc.Filter
             var message = filterContext.Exception.Message;
             var method = filterContext.HttpContext.Request.HttpMethod;
             var requestUrl = filterContext.HttpContext.Request.Url.AbsoluteUri;
-
-            var ip = filterContext.HttpContext.Request.UserHostAddress;
+            
             var client = filterContext.HttpContext.Request.UserAgent;
             var query = filterContext.HttpContext.Request.Url.Query;
             var form = string.Join("&", filterContext.HttpContext.Request.Form.AllKeys.Select(t => $"{t}={filterContext.HttpContext.Request.Form[t]}"));
@@ -39,7 +39,7 @@ namespace lyq.Mvc.Filter
                 ClientIP = Net.Ip,
                 ClientName = client
             });
-            logger.Error($"\r\n 异常描述：{message}\r\n 堆栈信息：{stackTrace}");
+            logger.Error($"\r\n异常描述：{message}\r\n堆栈信息：{stackTrace}");
 
 
             if (filterContext.HttpContext.Request.IsAjaxRequest())

@@ -29,10 +29,10 @@ namespace lyq.Web.Controllers
             return View();
         }
         [HttpPost]
-        [LoginFilter]
+        [LoginMonitoring]
         public async Task<ActionResult> Login(string username, string password, string checkcode, string returnUrl)
         {
-            throw new Exception("error");
+            ViewData["UserName"] = username;
             string sessionCode = Session["checkcode"]?.ToString();
             if (sessionCode == null)
             {
@@ -60,12 +60,12 @@ namespace lyq.Web.Controllers
                     else
                     {
                         var identity = new ClaimsIdentity(new List<Claim> {
-                        new Claim(ClaimTypes.Name, user.UserName),
-                        new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
-                        new Claim(ClaimTypes.Email,user.Email),
-                        new Claim(ClaimTypes.MobilePhone,user.Phone),
-                        new Claim(ClaimTypes.Role,user.RoleId.ToString()),
-                    }, CookieAuthenticationDefaults.AuthenticationType);
+                            new Claim(ClaimTypes.Name, user.UserName),
+                            new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
+                            new Claim(ClaimTypes.Email,user.Email),
+                            new Claim(ClaimTypes.MobilePhone,user.Phone),
+                            new Claim(ClaimTypes.Role,user.RoleId.ToString()),
+                        }, CookieAuthenticationDefaults.AuthenticationType);
 
                         HttpContext.GetOwinContext().Authentication.SignIn(identity);
 
