@@ -12,7 +12,7 @@ namespace lyq.Mvc.Filter
     /// <summary>
     /// 异常监控
     /// </summary>
-    public class ExceptionMonitoringAttribute : HandleErrorAttribute
+    public class ExceptionFilterAttribute : HandleErrorAttribute
     {
         ILogger logger = AutoFacMvcConfig.Resolve<ILogger>();
 

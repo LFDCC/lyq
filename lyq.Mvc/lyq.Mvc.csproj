@@ -104,7 +104,6 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -166,7 +165,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filter\AuthorizeFilterAttribute.cs" />
-    <Compile Include="Filter\ExceptionMonitoringAttribute.cs" />
+    <Compile Include="Filter\ExceptionFilterAttribute.cs" />
     <Compile Include="Filter\LoginMonitoringAttribute.cs" />
     <Compile Include="Filter\JsonFilterAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -308,6 +307,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Configs\log4net.config" />

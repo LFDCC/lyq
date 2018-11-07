@@ -83,6 +83,7 @@
                         } else {
                             nprogress.done();
                             index = layer.alert(res.msg, { icon: 5 });
+                            $("#imgCheckCode").click();
                         }
                     }
                 });
@@ -111,9 +112,8 @@
             })
             $(document).on("keydown", function (event) {
                 if (event.keyCode == 13) {
-                    if (index > 0) {
+                    if ($("#layui-layer" + index).length==1) {
                         layer.close(index);
-                        index = 0;
                     } else {
                         $("#btnSub").click();
                     }

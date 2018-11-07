@@ -33,12 +33,12 @@ namespace lyq.Web.Controllers
         public async Task<ActionResult> Login(string username, string password, string checkcode, string returnUrl)
         {
             ViewData["UserName"] = username;
-            string sessionCode = Session["checkcode"]?.ToString();
-            if (sessionCode == null)
+            var tempCode=TempData["checkcode"]?.ToString();
+            if (tempCode == null)
             {
                 return Json(new HttpResult { status = ResultState.fail, msg = "验证码过期，请刷新！" });
             }
-            else if (sessionCode.ToLower() != checkcode.ToLower())
+            else if (tempCode.ToLower() != checkcode.ToLower())
             {
                 return Json(new HttpResult { status = ResultState.fail, msg = "验证码错误！" });
             }
@@ -84,7 +84,7 @@ namespace lyq.Web.Controllers
         {
             VerificationCode vh = new VerificationCode();
             string code = vh.GetRandomNumberString(4);
-            Session["checkcode"] = code;
+            TempData["checkcode"] = code;
             byte[] img = vh.CreateImage(code);
             return File(img, "image/jpeg");
         }
