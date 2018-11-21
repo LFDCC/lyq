@@ -13,7 +13,7 @@
             var message = XMLHttpRequest.responseText;
             console.log(XMLHttpRequest);
             console.log(status);
-            layer.alert(message, { title: status, icon: 15 }, function (index) {
+            layer.alert(message, { title: status, icon: 15, closeBtn: 0 }, function (index) {
                 console.log(index);
                 if (status == 999) {
                     top.window.location = "/Account/Logout";
