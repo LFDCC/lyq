@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
-using lyq.Infrastructure.Log;
 using System;
 using System.Linq;
 using System.Reflection;

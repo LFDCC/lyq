@@ -2,6 +2,7 @@
 using Microsoft.Owin.Security.Cookies;
 using System;
 using System.Linq;
+using System.Net;
 using System.Security.Principal;
 using System.Web.Mvc;
 
@@ -35,13 +36,17 @@ namespace lyq.Mvc.Filter
                     IPrincipal user = filterContext.HttpContext.User;
                     if (!user.Identity.IsAuthenticated)
                     {
-                        filterContext.Result = new JsonNetResult { Data = new HttpResult { status = ResultState.timeout, data = CookieAuthenticationDefaults.LoginPath, msg = "请求超时" }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                        filterContext.Result = new ContentResult { Content="请求超时，请重新登录"};
+                        filterContext.HttpContext.Response.Clear();
+                        filterContext.HttpContext.Response.StatusCode = 999;//应返回401 如果不适用OWIN返回401即可
                     }
                     else
                     {
                         if (_usersSplit.Length != 0 && !_usersSplit.Contains(user.Identity.Name, StringComparer.OrdinalIgnoreCase))
                         {
-                            filterContext.Result = new JsonNetResult { Data = new HttpResult { status = ResultState.unright, msg = "没权限访问" }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                            filterContext.Result = new ContentResult { Content = "未授权操作，禁止访问"};
+                            filterContext.HttpContext.Response.Clear();
+                            filterContext.HttpContext.Response.StatusCode = 403;
                         }
                         else if (_rolesSplit.Length != 0)
                         {
@@ -49,7 +54,9 @@ namespace lyq.Mvc.Filter
                             IPrincipal principal = user;
                             if (!rolesSplit.Any(principal.IsInRole))
                             {
-                                filterContext.Result = new JsonNetResult { Data = new HttpResult { status = ResultState.unright, msg = "没权限访问" }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                                filterContext.Result = new ContentResult { Content = "未授权操作，禁止访问" };
+                                filterContext.HttpContext.Response.Clear();
+                                filterContext.HttpContext.Response.StatusCode = 403;
                             }
                         }
                     }

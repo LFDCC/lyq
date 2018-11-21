@@ -7,18 +7,19 @@
         beforeSend: function () {
             //loading = layer.msg('数据请求中', { icon: 16, time: false });
         },
-        complete: function (XMLHttpRequest, textStatus) {
-            //layer.close(loading);
-            var redirect = XMLHttpRequest.responseJSON.redirect;
-            var timeout = XMLHttpRequest.responseJSON.status === 204;
-            if (timeout) {
-                //如果超时就处理 ，指定要跳转的页面
-                top.window.location = redirect || "/Account/Login";
-            }
-        },
         error: function (XMLHttpRequest) {
-            var message = XMLHttpRequest.responseJSON.message;
-            layer.msg('异常！' + message, { icon: 15, time: 1200, shade: 0 });
+            console.log('error');
+            var status = XMLHttpRequest.status;
+            var message = XMLHttpRequest.responseText;
+            console.log(XMLHttpRequest);
+            console.log(status);
+            layer.alert(message, { title: status, icon: 15 }, function (index) {
+                console.log(index);
+                if (status == 999) {
+                    top.window.location = "/Account/Logout";
+                }
+                layer.close(index);
+            });
         }
     });
     e('jax', {});

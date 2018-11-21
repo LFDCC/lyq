@@ -55,18 +55,6 @@
     <Compile Include="Mapping\PostMapping.cs" />
     <Compile Include="Mapping\RoleMapping.cs" />
     <Compile Include="Mapping\UserMapping.cs" />
-    <Compile Include="Migrations\201811011315561_InitialCreate.cs" />
-    <Compile Include="Migrations\201811011315561_InitialCreate.Designer.cs">
-      <DependentUpon>201811011315561_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811021334565_updateLog.cs" />
-    <Compile Include="Migrations\201811021334565_updateLog.Designer.cs">
-      <DependentUpon>201811021334565_updateLog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811031244490_update20181103.cs" />
-    <Compile Include="Migrations\201811031244490_update20181103.Designer.cs">
-      <DependentUpon>201811031244490_update20181103.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -83,17 +71,6 @@
       <Project>{D4CE3501-DAC4-4945-BF90-69A4F782BFB6}</Project>
       <Name>lyq.Infrastructure</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811011315561_InitialCreate.resx">
-      <DependentUpon>201811011315561_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811021334565_updateLog.resx">
-      <DependentUpon>201811021334565_updateLog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811031244490_update20181103.resx">
-      <DependentUpon>201811031244490_update20181103.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -27,7 +27,7 @@ namespace lyq.Mvc
                 AuthenticationType = CookieAuthenticationDefaults.AuthenticationType,//Cookies
                 LoginPath = CookieAuthenticationDefaults.LoginPath,//Account/Login
                 LogoutPath = CookieAuthenticationDefaults.LogoutPath,//Account/Logout
-                ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter,//ReturnUrl
+                ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter//ReturnUrl
             });
             LoggerConfig.RegisterLog4net("/Configs/log4net.config");
             AutoMapConfig.RegisterMapper();

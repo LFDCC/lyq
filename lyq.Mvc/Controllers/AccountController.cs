@@ -33,7 +33,7 @@ namespace lyq.Web.Controllers
         public async Task<ActionResult> Login(string username, string password, string checkcode, string returnUrl)
         {
             ViewData["UserName"] = username;
-            var tempCode=TempData["checkcode"]?.ToString();
+            var tempCode = TempData["checkcode"]?.ToString();
             if (tempCode == null)
             {
                 return Json(new HttpResult { status = ResultState.fail, msg = "验证码过期，请刷新！" });

@@ -29,14 +29,6 @@
         /// <summary>
         /// 异常
         /// </summary>
-        error = 202,
-        /// <summary>
-        /// 没有权限
-        /// </summary>
-        unright = 203,
-        /// <summary>
-        /// 超时
-        /// </summary>
-        timeout = 204
+        error = 202
     }
 }
